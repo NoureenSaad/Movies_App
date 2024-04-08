@@ -7,6 +7,14 @@ class AppTheme{
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.lightPrimaryColor,
       primary: ColorsManager.lightPrimaryColor
-    )
+    ),
+    textTheme: const TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 30,
+        color: ColorsManager.selectedTabColor,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+      ),
+    ),
   );
 }
