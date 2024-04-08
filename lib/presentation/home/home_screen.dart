@@ -16,9 +16,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  List<Widget> tabs = [HomeTab(),SearchTab(),BrowseTab(),WatchListTab()];
-  List<IconData> iconsList = [Icons.home, Icons.search, Icons.movie, Icons.collections_bookmark];
-  List<String> tabsLabel = ["HOME","SEARCH","BROWSE","WATCHLIST"];
+  List<Widget> tabs = [
+    HomeTab(),
+    SearchTab(),
+    BrowseTab(),
+    WatchListTab(),
+  ];
+  List<IconData> iconsList = [
+    Icons.home,
+    Icons.search,
+    Icons.movie,
+    Icons.collections_bookmark,
+  ];
+  List<String> tabsLabel = [
+    "HOME",
+    "SEARCH",
+    "BROWSE",
+    "WATCHLIST",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         height: 70.h,
         itemCount: iconsList.length,
-        tabBuilder: (int index,bool isActive){
+        tabBuilder: (int index, bool isActive) {
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,19 +50,25 @@ class _HomeScreenState extends State<HomeScreen> {
               Icon(
                 iconsList[index],
                 size: 28.sp,
-                color: isActive? ColorsManager.selectedTabColor: ColorsManager.unSelectedTabColor,
+                color: isActive
+                    ? ColorsManager.selectedTabColor
+                    : ColorsManager.unSelectedTabColor,
               ),
               SizedBox(height: 4.h),
               Text(
                 tabsLabel[index],
-                style: TextStyle(fontSize: 12.sp,color: isActive? ColorsManager.selectedTabColor: ColorsManager.unSelectedTabColor),
+                style: TextStyle(
+                    fontSize: 12.sp,
+                    color: isActive
+                        ? ColorsManager.selectedTabColor
+                        : ColorsManager.unSelectedTabColor),
               )
             ],
           );
         },
         gapLocation: GapLocation.none,
         backgroundColor: ColorsManager.bottomNavBackgroundColor,
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             selectedIndex = index;
           });

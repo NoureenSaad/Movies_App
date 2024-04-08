@@ -4,6 +4,8 @@ import 'package:movies_app/config/theme/app_theme.dart';
 import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/home/home_screen.dart';
 
+import 'presentation/splash/splash_screen.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -19,9 +21,10 @@ class MyApp extends StatelessWidget {
           title: 'Movies Application',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
-          initialRoute: RoutesManager.homeScreenRoute,
+          initialRoute: RoutesManager.splashScreenRoute,
           routes: {
             RoutesManager.homeScreenRoute:(_)=>HomeScreen(),
+            RoutesManager.splashScreenRoute:(_)=>const SplashScreen(),
           },
         );
       },
