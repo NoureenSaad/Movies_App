@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:movies_app/core/utils/assets_manager.dart';
 import 'package:movies_app/core/utils/colors_manager.dart';
+import 'package:movies_app/core/utils/strings_manager.dart';
 
 import '../../core/utils/routes_manager.dart';
 
@@ -36,13 +38,13 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Lottie.asset(
               height: 300.h,
-              'assets/images/Movies_logo.json',
+              AssetsManager.appLogo,
             ),
             SizedBox(
               height: 5.h,
             ),
             Text(
-              'Flimora',
+              StringsManager.appName,
               style: GoogleFonts.playfairDisplay(
                 textStyle: Theme.of(context).textTheme.headlineLarge,
               ),
