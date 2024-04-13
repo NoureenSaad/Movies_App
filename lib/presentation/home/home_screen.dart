@@ -2,10 +2,10 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/utils/colors_manager.dart';
-import 'package:movies_app/presentation/home/tabs/browse_tab.dart';
-import 'package:movies_app/presentation/home/tabs/home_tab.dart';
-import 'package:movies_app/presentation/home/tabs/search_tab.dart';
-import 'package:movies_app/presentation/home/tabs/watchlist_tab.dart';
+import 'package:movies_app/presentation/home/tabs/browse_tab/browse_tab.dart';
+import 'package:movies_app/presentation/home/tabs/home_tab/home_tab.dart';
+import 'package:movies_app/presentation/home/tabs/search_tab/search_tab.dart';
+import 'package:movies_app/presentation/home/tabs/watchlist_tab/watchlist_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
