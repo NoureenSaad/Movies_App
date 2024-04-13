@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           initialRoute: RoutesManager.splashScreenRoute,
           routes: {
-            RoutesManager.homeScreenRoute:(_)=>HomeScreen(),
+            RoutesManager.homeScreenRoute:(_)=>const HomeScreen(),
             RoutesManager.splashScreenRoute:(_)=>const SplashScreen(),
           },
         );
