@@ -1,4 +1,4 @@
-import 'package:either_dart/src/either.dart';
+import 'package:either_dart/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/core/api/api_manager.dart';
 import 'package:movies_app/core/api/endpoints.dart';
@@ -16,6 +16,7 @@ class MoviesGenresDataSourceImpl extends MoviesGenresDataSource{
     try{
       var response = await apiManager.getRequest(endpoint: Endpoints.getMoviesListEndpoint);
       MoviesGenresResponse moviesGenresResponse = MoviesGenresResponse.fromJson(response.data);
+      print("Success");
       return Left(moviesGenresResponse);
     }catch(error){
       return Right(error.toString());

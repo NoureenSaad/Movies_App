@@ -1,5 +1,4 @@
 import 'package:either_dart/either.dart';
-import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/data/datasource_contract/movies_genres_datasource.dart';
 

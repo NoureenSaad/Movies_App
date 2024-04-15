@@ -1,31 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/utils/assets_manager.dart';
+import 'package:movies_app/presentation/home/tabs/browse_tab/view_model/browse_tab_view_model.dart';
+import 'movie_genre_widget.dart';
 
-import 'movie_genre_wigdet.dart';
-
-class MoviesGenresListWidget extends StatelessWidget {
+class MoviesGenresListWidget extends StatefulWidget {
   const MoviesGenresListWidget({super.key});
 
   @override
+  State<MoviesGenresListWidget> createState() => _MoviesGenresListWidgetState();
+}
+
+class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
+  List<String> imagePaths = [AssetsManager.actionGenre,AssetsManager.adventureGenre,AssetsManager.animationGenre,AssetsManager.comedyGenre];
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<BrowseTabViewModel>().getMoviesGenres();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: REdgeInsets.all(16),
-        child: SizedBox(
-          height: 800.h,
-          child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16.h,
-                  mainAxisSpacing: 16.w
+    return BlocConsumer<BrowseTabViewModel,BrowseTabStates>(
+      buildWhen: (prevState , currentState){
+        // print("Build When");
+        if(currentState is BrowseTabSuccessState ){
+          return true;
+        }
+        return false;
+      },
+      listenWhen: (prevState , currentState){
+        // print("Listen When");
+        if(currentState is BrowseTabSuccessState
+            ||currentState is BrowseTabErrorState
+            ||currentState is BrowseTabLoadingState){
+          return true;
+        }
+        return false;
+      },
+      listener: (context,state){
+        if(state is BrowseTabLoadingState){
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: SizedBox(
+                height: 90.h,
+                child: Center(child: CircularProgressIndicator(),),
               ),
-              itemCount: 10,
-              itemBuilder: (context, index){
-                return MovieGenreWidget(genreName: "action");
-              }
-          ),
-        ),
-      ),
+            );
+          },);
+        }
+        if(state is BrowseTabErrorState){
+          showDialog(context: context, builder: (context) {
+            return AlertDialog(
+              content: Text(state.error),
+            );
+          },);
+        }
+        if(state is BrowseTabSuccessState){
+          Navigator.pop(context);
+        }
+      },
+      builder: (context , state){
+        if(state is BrowseTabSuccessState){
+          // print("Success");
+          return Expanded(
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16.h,
+                    mainAxisSpacing: 10.w
+                ),
+                itemCount: state.genres.length,
+                itemBuilder: (context, index){
+                  return InkWell(
+                      onTap: (){
+
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: MovieGenreWidget(
+                          movieGenre: state.genres[index],
+                          imagePath: (index+1)<=imagePaths.length?imagePaths[index]:"assets/images/default.jpg",
+                        ),
+                      )
+                  );
+                }
+            ),
+          );
+        }
+        // print("Not Success");
+        return Center(child: CircularProgressIndicator(),);
+      },
     );
   }
 }

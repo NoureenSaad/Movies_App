@@ -13,9 +13,9 @@ class BrowseTabViewModel extends Cubit<BrowseTabStates>{
     emit(BrowseTabLoadingState());
     var result = await moviesGenresUseCase.call();
     result.fold((genres) {
-      BrowseTabSuccessState(genres);
+      emit(BrowseTabSuccessState(genres));
     }, (error) {
-      BrowseTabErrorState(error);
+      emit(BrowseTabErrorState(error));
     });
   }
 }
