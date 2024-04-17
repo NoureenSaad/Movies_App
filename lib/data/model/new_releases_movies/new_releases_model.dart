@@ -1,3 +1,5 @@
+import 'package:movies_app/domain/entities/NewReleasesEntity.dart';
+
 /// adult : false
 /// backdrop_path : "/j3Z3XktmWB1VhsS8iXNcrR86PXi.jpg"
 /// genre_ids : [28,878,12,14]
@@ -79,5 +81,14 @@ class NewReleasesModel {
     map['vote_count'] = voteCount;
     return map;
   }
+
+  NewReleasesEntity toNewReleasesEntity(){
+
+    return NewReleasesEntity(
+      id: id,
+      posterPath: posterPath,
+    );
+
+}
 
 }
