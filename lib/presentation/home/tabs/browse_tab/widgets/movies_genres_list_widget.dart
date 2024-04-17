@@ -83,7 +83,7 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
                         borderRadius: BorderRadius.circular(15),
                         child: MovieGenreWidget(
                           movieGenre: state.genres[index],
-                          imagePath: (index+1)<=imagePaths.length?imagePaths[index]:"assets/images/default.jpg",
+                          imagePath: (index+1)<=imagePaths.length?imagePaths[index]:AssetsManager.defaultPhotoGenre,
                         ),
                       )
                   );

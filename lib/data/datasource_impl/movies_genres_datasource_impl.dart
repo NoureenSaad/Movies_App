@@ -16,7 +16,6 @@ class MoviesGenresDataSourceImpl extends MoviesGenresDataSource{
     try{
       var response = await apiManager.getRequest(endpoint: Endpoints.getMoviesListEndpoint);
       MoviesGenresResponse moviesGenresResponse = MoviesGenresResponse.fromJson(response.data);
-      print("Success");
       return Left(moviesGenresResponse);
     }catch(error){
       return Right(error.toString());
