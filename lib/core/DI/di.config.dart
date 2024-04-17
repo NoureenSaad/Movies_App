@@ -21,10 +21,23 @@ import '../../domain/repository_contract/movies_genres_repo.dart' as _i8;
 import '../../domain/repository_contract/popular_movies_repo.dart' as _i10;
 import '../../domain/usecases/movies_genres_usecase.dart' as _i13;
 import '../../domain/usecases/popular_movies_usecase.dart' as _i12;
+import '../../data/datasource_contract/movies_genres_datasource.dart' as _i4;
+import '../../data/datasource_contract/new_releases_datasource.dart' as _i6;
+import '../../data/datasource_impl/movies_genres_datasource_impl.dart' as _i5;
+import '../../data/datasource_impl/new_releases_datasource_impl.dart' as _i7;
+import '../../data/repository_impl/movies_genres_repo_impl.dart' as _i9;
+import '../../data/repository_impl/new_releases_repo_impl.dart' as _i12;
+import '../../domain/repository_contract/movies_genres_repo.dart' as _i8;
+import '../../domain/repository_contract/new_releases_repo.dart' as _i11;
+import '../../domain/usecases/movies_genres_usecase.dart' as _i10;
+import '../../domain/usecases/new_releases_use_case.dart' as _i14;
 import '../../presentation/home/tabs/browse_tab/view_model/browse_tab_view_model.dart'
     as _i15;
 import '../../presentation/home/tabs/home_tab/popular_movies/view_model/popular_movies_view_model.dart'
     as _i14;
+    as _i13;
+import '../../presentation/home/tabs/home_tab/new_releases_movies/view_model/new_release_view_model.dart'
+    as _i15;
 import '../api/api_manager.dart' as _i3;
 
 extension GetItInjectableX on _i1.GetIt {
