@@ -1,4 +1,6 @@
-import 'package:movies_app/domain/entities/NewReleasesEntity.dart';
+
+
+import '../../../domain/entities/MoviesEntity.dart';
 
 /// adult : false
 /// backdrop_path : "/j3Z3XktmWB1VhsS8iXNcrR86PXi.jpg"
@@ -82,9 +84,9 @@ class NewReleasesModel {
     return map;
   }
 
-  NewReleasesEntity toNewReleasesEntity(){
+  MoviesEntity toNewReleasesEntity(){
 
-    return NewReleasesEntity(
+    return MoviesEntity(
       id: id,
       posterPath: posterPath,
     );

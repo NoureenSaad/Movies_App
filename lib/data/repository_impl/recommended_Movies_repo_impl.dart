@@ -1,7 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entities/RecommendedMoviesEntity.dart';
+import '../../domain/entities/MoviesEntity.dart';
 import '../../domain/repository_contract/recommended_movies_repo.dart';
 import '../datasource_contract/RecommendedMoviesDataSource.dart';
 
@@ -13,8 +13,7 @@ class RecommendedMoviesRepoImpl extends RecommendedMoviesRepo {
   RecommendedMoviesRepoImpl(this.apiRecommendedMoviesDataSource);
 
   @override
-  Future<Either<List<RecommendedMoviesEntity>, String>>
-      getRecommendedMovies() async {
+  Future<Either<List<MoviesEntity>, String>> getRecommendedMovies() async {
     var result = await apiRecommendedMoviesDataSource.getRecommendedMovies();
     return result.fold((response) {
       var getRecommendedMoviesModelList = response.results ?? [];

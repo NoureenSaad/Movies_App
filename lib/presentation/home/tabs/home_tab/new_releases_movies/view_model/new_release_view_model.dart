@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movies_app/domain/entities/NewReleasesEntity.dart';
+
 import 'package:movies_app/domain/usecases/new_releases_use_case.dart';
+
+import '../../../../../../domain/entities/MoviesEntity.dart';
 
 @injectable
 class NewReleasesMoviesViewModel extends Cubit<NewReleasesMoviesStates> {
@@ -36,7 +38,7 @@ class NewReleasesMoviesInitState extends NewReleasesMoviesStates {}
 class NewReleasesMoviesLoadingState extends NewReleasesMoviesStates {}
 
 class NewReleaseMoviesSuccessState extends NewReleasesMoviesStates {
-  List<NewReleasesEntity> newReleaseMovies;
+  List<MoviesEntity> newReleaseMovies;
 
   NewReleaseMoviesSuccessState(this.newReleaseMovies);
 }

@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/domain/usecases/popular_movies_usecase.dart';
 
-import '../../../../../../domain/entities/Popular_movies_entity.dart';
+import '../../../../../../domain/entities/MoviesEntity.dart';
+
 
 @injectable
 class PopularMoviesViewModel extends Cubit<PopularMoviesStates> {
@@ -37,7 +39,7 @@ class PopularMoviesInitState extends PopularMoviesStates {}
 class PopularMoviesLoadingState extends PopularMoviesStates {}
 
 class PopularMoviesSuccessState extends PopularMoviesStates {
-  List<PopularMoviesEntity> popularMovies;
+  List<MoviesEntity> popularMovies;
 
   PopularMoviesSuccessState(this.popularMovies);
 }

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/domain/usecases/recommended_movies_use_case.dart';
 
-import '../../../../../../domain/entities/RecommendedMoviesEntity.dart';
+import '../../../../../../domain/entities/MoviesEntity.dart';
 
 @injectable
 class RecommendedMoviesViewModel extends Cubit<RecommendedMoviesStates> {
@@ -37,7 +37,7 @@ class RecommendedMoviesInitState extends RecommendedMoviesStates {}
 class RecommendedMoviesLoadingState extends RecommendedMoviesStates {}
 
 class RecommendedMoviesSuccessState extends RecommendedMoviesStates {
-  List<RecommendedMoviesEntity> recommendedMovies;
+  List<MoviesEntity> recommendedMovies;
 
   RecommendedMoviesSuccessState(this.recommendedMovies);
 }

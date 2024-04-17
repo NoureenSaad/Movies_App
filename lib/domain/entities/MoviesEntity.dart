@@ -1,39 +1,36 @@
-import '../../../domain/entities/MoviesEntity.dart';
-
 /// adult : false
-/// backdrop_path : "/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg"
-/// genre_ids : [878,12]
-/// id : 693134
+/// backdrop_path : "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"
+/// genre_ids : [18,80]
+/// id : 278
 /// original_language : "en"
-/// original_title : "Dune: Part Two"
-/// overview : "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee."
-/// popularity : 4661.985
-/// poster_path : "/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
-/// release_date : "2024-02-27"
-/// title : "Dune: Part Two"
+/// original_title : "The Shawshank Redemption"
+/// overview : "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope."
+/// popularity : 123.237
+/// poster_path : "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"
+/// release_date : "1994-09-23"
+/// title : "The Shawshank Redemption"
 /// video : false
-/// vote_average : 8.309
-/// vote_count : 2827
+/// vote_average : 8.704
+/// vote_count : 26002
 
-class PopularMoviesModel {
-  PopularMoviesModel({
-    this.adult,
-    this.backdropPath,
-    this.genreIds,
-    this.id,
-    this.originalLanguage,
-    this.originalTitle,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.releaseDate,
-    this.title,
-    this.video,
-    this.voteAverage,
-    this.voteCount,
-  });
+class MoviesEntity {
+  MoviesEntity({
+      this.adult, 
+      this.backdropPath, 
+      this.genreIds, 
+      this.id, 
+      this.originalLanguage, 
+      this.originalTitle, 
+      this.overview, 
+      this.popularity, 
+      this.posterPath, 
+      this.releaseDate, 
+      this.title, 
+      this.video, 
+      this.voteAverage, 
+      this.voteCount,});
 
-  PopularMoviesModel.fromJson(dynamic json) {
+  MoviesEntity.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<int>() : [];
@@ -49,7 +46,6 @@ class PopularMoviesModel {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
-
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -84,16 +80,4 @@ class PopularMoviesModel {
     return map;
   }
 
-  //todo: make function change model to entity
-
-  MoviesEntity toPopularMoviesEntity() {
-    return MoviesEntity(
-      backdropPath: backdropPath,
-      id: id,
-      originalTitle: originalTitle,
-      posterPath: posterPath,
-      releaseDate: releaseDate,
-      title: title,
-    );
-  }
 }

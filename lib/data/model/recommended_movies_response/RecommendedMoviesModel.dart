@@ -1,4 +1,4 @@
-import 'package:movies_app/domain/entities/RecommendedMoviesEntity.dart';
+import '../../../domain/entities/MoviesEntity.dart';
 
 /// adult : false
 /// backdrop_path : "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"
@@ -84,8 +84,8 @@ class RecommendedMoviesModel {
     return map;
   }
 
-  RecommendedMoviesEntity toRecommendedMoviesEntity() {
-    return RecommendedMoviesEntity(
+  MoviesEntity toRecommendedMoviesEntity() {
+    return MoviesEntity(
       posterPath: posterPath,
       popularity: popularity,
       id: id,
