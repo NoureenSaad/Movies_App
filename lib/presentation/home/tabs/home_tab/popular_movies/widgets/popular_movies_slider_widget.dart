@@ -17,20 +17,18 @@ class PopularMoviesSliderWidget extends StatelessWidget {
       child: BlocBuilder<PopularMoviesViewModel, PopularMoviesStates>(
           builder: (context, state) {
         if (state is PopularMoviesSuccessState) {
-          return Expanded(
-            child: CarouselSlider.builder(
-              options: CarouselOptions(
-                  height: 289.h,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.8),
-              itemCount: state.popularMovies.length,
-              itemBuilder: (context, index, index2) {
-                return PopularMovieWidget(
-                  moviesEntity: state.popularMovies[index],
-                );
-              },
-            ),
+          return CarouselSlider.builder(
+            options: CarouselOptions(
+                height: 289.h,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                viewportFraction: 0.8),
+            itemCount: state.popularMovies.length,
+            itemBuilder: (context, index, index2) {
+              return PopularMovieWidget(
+                moviesEntity: state.popularMovies[index],
+              );
+            },
           );
         } else if (state is PopularMoviesErrorState) {
           return Center(
