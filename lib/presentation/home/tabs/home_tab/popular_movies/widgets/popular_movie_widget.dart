@@ -55,7 +55,7 @@ class PopularMovieWidget extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.inter(
                             textStyle:
-                                Theme.of(context).textTheme.headlineMedium,
+                                Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
                         SizedBox(
@@ -67,7 +67,7 @@ class PopularMovieWidget extends StatelessWidget {
                           style: GoogleFonts.inter(
                             textStyle: Theme.of(context)
                                 .textTheme
-                                .headlineMedium!
+                                .headlineSmall!
                                 .copyWith(
                                   color: ColorsManager.movieDetailsTextColor,
                                   fontSize: 10.sp,

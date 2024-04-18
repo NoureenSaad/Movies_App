@@ -27,7 +27,7 @@ class NewReleasesListWidget extends StatelessWidget {
               style: GoogleFonts.inter(
                 textStyle: Theme.of(context)
                     .textTheme
-                    .headlineMedium!
+                    .headlineSmall!
                     .copyWith(
                   color: Colors.white,
                   fontSize: 24.sp,

@@ -29,7 +29,7 @@ class RecommendListWidget extends StatelessWidget {
             Text(
               StringsManager.recommended,
               style: GoogleFonts.inter(
-                textStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                textStyle: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       color: Colors.white,
                       fontSize: 24.sp,
                     ),
@@ -81,7 +81,7 @@ class RecommendListWidget extends StatelessWidget {
                                   style: GoogleFonts.poppins(
                                       textStyle: Theme.of(context)
                                           .textTheme
-                                          .headlineMedium!
+                                          .headlineSmall!
                                           .copyWith(
                                             color: Colors.white,
                                             fontSize: 10.sp,
@@ -100,7 +100,7 @@ class RecommendListWidget extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 textStyle: Theme.of(context)
                                     .textTheme
-                                    .headlineMedium!
+                                    .headlineSmall!
                                     .copyWith(
                                       color: Colors.white,
                                       //todo: card check
@@ -117,7 +117,7 @@ class RecommendListWidget extends StatelessWidget {
                               style: GoogleFonts.inter(
                                 textStyle: Theme.of(context)
                                     .textTheme
-                                    .headlineMedium!
+                                    .headlineSmall!
                                     .copyWith(
                                       color: ColorsManager
                                           .movieDetailsTextColor,
