@@ -15,6 +15,11 @@ class AppTheme{
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.italic,
       ),
+      headlineMedium: TextStyle(
+        color: Colors.white,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
     ),
   );
 }

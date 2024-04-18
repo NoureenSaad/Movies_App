@@ -10,9 +10,9 @@ class ApiManager{
     dio = Dio(
       BaseOptions(
         baseUrl: Constants.baseURL,
-        headers: {
-          "Authorization":Constants.apiToken,
-        }
+        queryParameters: {
+          "api_key": Constants.apiKey
+        },
       )
     );
   }
