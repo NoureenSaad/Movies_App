@@ -16,6 +16,16 @@ class AppTheme{
         fontStyle: FontStyle.italic,
       ),
       headlineMedium: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+        color: Colors.white
+      ),
+      titleMedium: TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+        fontWeight: FontWeight.w600,
+      )
+      headlineMedium: TextStyle(
         color: Colors.white,
         fontSize: 14,
         fontWeight: FontWeight.w400,
