@@ -22,7 +22,8 @@ class PopularMoviesSliderWidget extends StatelessWidget {
                 height: 289.h,
                 autoPlay: true,
                 enlargeCenterPage: true,
-                viewportFraction: 0.8),
+                viewportFraction: 1,
+              ),
             itemCount: state.popularMovies.length,
             itemBuilder: (context, index, index2) {
               return PopularMovieWidget(

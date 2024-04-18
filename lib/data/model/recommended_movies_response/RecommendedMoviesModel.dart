@@ -87,10 +87,11 @@ class RecommendedMoviesModel {
   MoviesEntity toRecommendedMoviesEntity() {
     return MoviesEntity(
       posterPath: posterPath,
-      popularity: popularity,
       id: id,
       title: title,
       releaseDate: releaseDate,
+      voteAverage: voteAverage,
+      adult: adult,
     );
   }
 }
