@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/reusable_components/movie_card_widget.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
-
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/reusable_functions/reusable_functions.dart';
 import '../../../../../../core/utils/colors_manager.dart';
@@ -28,9 +27,14 @@ class PopularMovieWidget extends StatelessWidget {
         color: Theme.of(context).colorScheme.primary,
         child: Stack(
           children: [
-            Image.network(
-              '${Constants.imagePathBaseUrl}${moviesEntity.backdropPath}',
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(7),
+              child: Image.network(
+                '${Constants.imagePathBaseUrl}${moviesEntity.backdropPath}',
+                fit: BoxFit.cover,
+                height: 217.h,
+                width: 412.w,
+              ),
             ),
             Positioned(
               top: 90.h,
@@ -43,7 +47,7 @@ class PopularMovieWidget extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 110,
+                      top: 130,
                       left: 10,
                     ),
                     child: Column(
@@ -55,7 +59,7 @@ class PopularMovieWidget extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.inter(
                             textStyle:
-                                Theme.of(context).textTheme.headlineSmall,
+                                Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
                         SizedBox(

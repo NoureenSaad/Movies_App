@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
 import '../../../../../../core/reusable_functions/reusable_functions.dart';
@@ -18,10 +15,10 @@ class RecommendListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.h,
+      height: 280.h,
       color: ColorsManager.containerColor,
       child: Padding(
-        padding: REdgeInsets.only(left: 24.0,top: 10),
+        padding: REdgeInsets.only(left: 18.0,top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/reusable_components/long_movie_card_widget.dart';
 
 import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
@@ -15,10 +16,10 @@ class NewReleasesListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.h,
+      height: 280.h,
       color: ColorsManager.containerColor,
       child: Padding(
-        padding:  REdgeInsets.all(8.0),
+        padding:  REdgeInsets.only(left: 18.0,top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,13 +53,9 @@ class NewReleasesListWidget extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemCount: state.newReleaseMovies.length,
                           itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                //todo: navigate to movie details
-                              },
-                              child: MovieCardWidget(
-                                moviesEntity: state.newReleaseMovies[index],
-                              ),
+                            return 
+                              MovieCardWidget(
+                              moviesEntity: state.newReleaseMovies[index],
                             );
                           },
                         ),
