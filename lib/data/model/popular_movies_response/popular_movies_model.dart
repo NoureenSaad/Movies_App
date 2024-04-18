@@ -90,10 +90,10 @@ class PopularMoviesModel {
     return MoviesEntity(
       backdropPath: backdropPath,
       id: id,
-      originalTitle: originalTitle,
       posterPath: posterPath,
       releaseDate: releaseDate,
       title: title,
+      adult: adult,
     );
   }
 }

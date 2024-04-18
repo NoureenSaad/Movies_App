@@ -47,13 +47,18 @@ class NewReleasesListWidget extends StatelessWidget {
                       return Expanded(
                         child: ListView.separated(
                           separatorBuilder: (context, index) => SizedBox(
-                            width: 10.w,
+                            width: 14.w,
                           ),
                           scrollDirection: Axis.horizontal,
                           itemCount: state.newReleaseMovies.length,
                           itemBuilder: (context, index) {
-                            return MovieCardWidget(
-                              moviesEntity: state.newReleaseMovies[index],
+                            return InkWell(
+                              onTap: () {
+                                //todo: navigate to movie details
+                              },
+                              child: MovieCardWidget(
+                                moviesEntity: state.newReleaseMovies[index],
+                              ),
                             );
                           },
                         ),

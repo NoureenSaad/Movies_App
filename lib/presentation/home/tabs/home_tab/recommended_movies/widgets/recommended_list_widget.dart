@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
 import '../../../../../../core/reusable_functions/reusable_functions.dart';
@@ -22,7 +21,7 @@ class RecommendListWidget extends StatelessWidget {
       height: 300.h,
       color: ColorsManager.containerColor,
       child: Padding(
-        padding: REdgeInsets.all(8.0),
+        padding: REdgeInsets.only(left: 24.0,top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,85 +46,89 @@ class RecommendListWidget extends StatelessWidget {
                   return Expanded(
                     child: ListView.separated(
                       separatorBuilder: (context, index) => SizedBox(
-                        width: 10.w,
+                        width: 14.w,
                       ),
                       scrollDirection: Axis.horizontal,
                       itemCount: state.recommendedMovies.length,
                       itemBuilder: (context, index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 150.h,
-                              child: InkWell(
-                                onTap: (){
-                                  //Todo: navigate to movie details
-                                },
-                                child: MovieCardWidget(
-                                  moviesEntity:
-                                      state.recommendedMovies[index],
+                        return SizedBox(
+                          width: 100.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 150.h,
+                                child: InkWell(
+                                  onTap: () {
+                                    //Todo: navigate to movie details
+                                  },
+                                  child: MovieCardWidget(
+                                    moviesEntity:
+                                        state.recommendedMovies[index],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: ColorsManager.selectedTabColor,
-                                ),
-                                SizedBox(width: 5.w,),
-                                Text(
-                                  //todo: null check
-                                  state.recommendedMovies[index].voteAverage
-                                      .toString(),
-                                  style: GoogleFonts.poppins(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .headlineSmall!
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 10.sp,
-                                          )),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            Text(
-                              state.recommendedMovies[index].title
-                                  .toString(),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(
-                                      color: Colors.white,
-                                      //todo: card check
-                                      fontSize: 10.sp,
-                                    ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: ColorsManager.selectedTabColor,
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  Text(
+                                    state.recommendedMovies[index].voteAverage!
+                                        .toStringAsFixed(1),
+                                    style: GoogleFonts.poppins(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .headlineSmall!
+                                            .copyWith(
+                                              color: Colors.white,
+                                              fontSize: 10.sp,
+                                            )),
+                                  ),
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            Text(
-                              //Todo: waiting movie time from Haneen
-                              '${ReusableFunctions.extractYear(state.recommendedMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.recommendedMovies[index].adult ?? false)} 2h 7m',
-                              style: GoogleFonts.inter(
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .copyWith(
-                                      color: ColorsManager
-                                          .movieDetailsTextColor,
-                                      fontSize: 10.sp,
-                                    ),
+                              SizedBox(
+                                height: 2.h,
                               ),
-                            ),
-                          ],
+                              Text(
+                                state.recommendedMovies[index].title.toString(),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.poppins(
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Colors.white,
+                                        fontSize: 10.sp,
+                                      ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Text(
+                                //Todo: waiting movie time from Haneen
+                                '${ReusableFunctions.extractYear(state.recommendedMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.recommendedMovies[index].adult ?? false)} 2h 7m',
+                                style: GoogleFonts.inter(
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color:
+                                            ColorsManager.movieDetailsTextColor,
+                                        fontSize: 10.sp,
+                                      ),
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
                         );
                       },
                     ),
