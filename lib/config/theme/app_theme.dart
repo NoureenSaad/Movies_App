@@ -4,6 +4,15 @@ import 'package:movies_app/core/utils/colors_manager.dart';
 class AppTheme{
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: ColorsManager.lightPrimaryColor,
+    appBarTheme: AppBarTheme(
+      color: Colors.transparent,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.w500
+      )
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.lightPrimaryColor,
       primary: ColorsManager.lightPrimaryColor

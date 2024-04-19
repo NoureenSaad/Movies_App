@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/utils/assets_manager.dart';
+import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/home/tabs/browse_tab/view_model/browse_tab_view_model.dart';
 import 'movie_genre_widget.dart';
 
@@ -77,7 +78,7 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
                 itemBuilder: (context, index){
                   return InkWell(
                       onTap: (){
-
+                        Navigator.of(context).pushNamed(RoutesManager.specificGenreListScreen,arguments: state.genres[index]);
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),

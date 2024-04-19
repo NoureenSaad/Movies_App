@@ -4,7 +4,8 @@
 class MoviesGenreEntity {
   MoviesGenreEntity({
       this.id, 
-      this.name,});
+      this.name,
+  });
 
   int? id;
   String? name;

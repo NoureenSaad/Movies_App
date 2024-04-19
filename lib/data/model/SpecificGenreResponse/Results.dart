@@ -1,4 +1,4 @@
-import 'package:movies_app/domain/entities/SpecificGenreEntity.dart';
+import '../../../domain/entities/MoviesEntity.dart';
 
 /// adult : false
 /// backdrop_path : "/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg"
@@ -82,8 +82,8 @@ class Results {
     return map;
   }
 
-  SpecificGenreEntity toSpecificGenreEntity(){
-    return SpecificGenreEntity(
+  MoviesEntity toSpecificGenreEntity(){
+    return MoviesEntity(
       title: title,
       adult: adult,
       genreIds: genreIds,
@@ -92,7 +92,8 @@ class Results {
       voteAverage: voteAverage,
       overview: overview,
       posterPath: posterPath,
-      releaseDate: releaseDate
+      releaseDate: releaseDate,
+      backdropPath: backdropPath
     );
   }
 
