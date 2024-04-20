@@ -26,8 +26,13 @@ class PopularMoviesSliderWidget extends StatelessWidget {
               ),
             itemCount: state.popularMovies.length,
             itemBuilder: (context, index, index2) {
-              return PopularMovieWidget(
-                moviesEntity: state.popularMovies[index],
+              return InkWell(
+                onTap: (){
+
+                },
+                child: PopularMovieWidget(
+                  moviesEntity: state.popularMovies[index],
+                ),
               );
             },
           );

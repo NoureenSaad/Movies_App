@@ -3,31 +3,62 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_app/core/constants.dart';
 
 @singleton
-class ApiManager{
+class ApiManager {
   static late Dio dio;
 
-  static init(){
+  static void init() {
     dio = Dio(
       BaseOptions(
         baseUrl: Constants.baseURL,
-        // headers: {
-        //   "Authorization":"Bearer ${Constants.apiToken}",
-        // },
         queryParameters: {
-          "api_key":Constants.apiKey
-        }
-
-      )
+          "api_key": Constants.apiKey,
+        },
+      ),
     );
   }
 
-  Future<Response> getRequest({required String endpoint, Map<String,dynamic>? queryParameters})async{
-    var response = await dio.get(endpoint,queryParameters: queryParameters);
-    return response;
+  ApiManager() {
+    init();
   }
 
-  Future<Response> postRequest({required String endpoint, Map<String,dynamic>? body}) async{
-    var response = await dio.post(endpoint,data: body);
-    return response;
+  Future<Response> getRequest({
+    required String endpoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      final response = await dio.get(
+        endpoint,
+        queryParameters: queryParameters,
+      );
+      return response;
+    } catch (e) {
+      throw (
+        requestOptions: RequestOptions(
+          path: endpoint,
+          queryParameters: queryParameters,
+        ),
+        error: e,
+      );
+    }
+  }
+
+  Future<Response> postRequest({
+    required String endpoint,
+    Map<String, dynamic>? body,
+  }) async {
+    try {
+      final response = await dio.post(
+        endpoint,
+        data: body,
+      );
+      return response;
+    } catch (e) {
+      throw (
+        requestOptions: RequestOptions(
+          path: endpoint,
+        ),
+        error: e,
+      );
+    }
   }
 }

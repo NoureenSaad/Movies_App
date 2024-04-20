@@ -6,11 +6,14 @@ import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../../../../../core/constants.dart';
 import '../../../../../../core/reusable_functions/reusable_functions.dart';
 import '../../../../../../core/utils/colors_manager.dart';
+import '../../../../details/movie_details/widgets/movie_details_widget.dart';
 
 class PopularMovieWidget extends StatelessWidget {
   MoviesEntity moviesEntity;
 
   PopularMovieWidget({super.key, required this.moviesEntity});
+
+  get movieId => null;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,22 @@ class PopularMovieWidget extends StatelessWidget {
         ReusableFunctions.getMovieClassification(moviesEntity.adult ?? false);
     return InkWell(
       onTap: () {
-        //todo: navigate to movie details
+        // Navigate to movie details screen if movieId is not null لا سمح الله يعني
+        if (moviesEntity.id != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MovieDetailsScreen(movieId: moviesEntity.id!,moviesEntity: moviesEntity,),
+            ),
+          );
+        } else {
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Movie ID is null'),
+            ),
+          );
+        }
       },
       child: Container(
         height: 289.h,

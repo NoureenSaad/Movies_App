@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> tabs = [
     HomeTab(),
-    SearchTab(),
+    SearchScreen(),
     BrowseTab(),
     WatchListTab(),
   ];
@@ -79,3 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../utils/colors_manager.dart';
 
 class LongMovieCardWidget extends StatelessWidget {
-  LongMovieCardWidget({super.key});
+  const LongMovieCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,26 @@ class LongMovieCardWidget extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("assets/images/action.png"),
-              SizedBox(width: 10.w,),
+              SizedBox(
+                width: 10.w,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Baghead",style: Theme.of(context).textTheme.titleMedium,),
-                  SizedBox(height: 5.h,),
-                  Text("2019",style: Theme.of(context).textTheme.headlineSmall,),
-                  SizedBox(height: 5.h,),
+                  Text(
+                    "Baghead",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Text(
+                    "2019",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
                   Row(
                     children: [
                       Icon(
@@ -38,7 +50,8 @@ class LongMovieCardWidget extends StatelessWidget {
                       Text(
                         "8.5",
                         style: GoogleFonts.poppins(
-                            textStyle: Theme.of(context).textTheme.headlineSmall),
+                            textStyle:
+                                Theme.of(context).textTheme.headlineSmall),
                       ),
                     ],
                   ),
@@ -46,8 +59,14 @@ class LongMovieCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20.h,),
-          Container(color: Colors.white.withOpacity(0.4),height: 1.h,width: double.infinity,)
+          SizedBox(
+            height: 20.h,
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.4),
+            height: 1.h,
+            width: double.infinity,
+          )
         ],
       ),
     );
