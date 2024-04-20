@@ -94,6 +94,7 @@ class PopularMoviesModel {
       releaseDate: releaseDate,
       title: title,
       adult: adult,
+      voteAverage: voteAverage,
     );
   }
 }

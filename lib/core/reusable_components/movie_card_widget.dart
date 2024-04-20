@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/constants.dart';
+import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
+import 'package:movies_app/core/firebase/providers/auth_provider.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/colors_manager.dart';
 
@@ -32,11 +36,18 @@ class MovieCardWidget extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {
-                    //Todo: add to wishlist
+                    if(moviesEntity.isFavorite??false){
+
+                    }
+                    else{
+                      FireStoreHelper.addToWatchList(FirebaseAuth.instance.currentUser!.uid, moviesEntity);
+
+                    }
+
                   },
                   icon: Icon(
                     Icons.favorite,
-                    color: Colors.white,
+                    color: (moviesEntity.isFavorite??false)?ColorsManager.selectedTabColor:Colors.white,
                     size: 15.sp,
                   ),
                 ),

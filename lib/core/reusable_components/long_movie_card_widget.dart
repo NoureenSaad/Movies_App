@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_app/core/constants.dart';
+import 'package:movies_app/core/reusable_components/movie_card_widget.dart';
 import 'package:movies_app/core/reusable_functions/reusable_functions.dart';
 import '../../domain/entities/MoviesEntity.dart';
 import '../utils/colors_manager.dart';
@@ -14,24 +14,18 @@ class LongMovieCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 103.h,
+      height: 160.h,
       width: 358.w,
       child: Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                  height: 89.h,
-                  width: 140.w,
-                  child: movie.backdropPath != null
-                      ? Image.network(
-                          "${Constants.imagePathBaseUrl}${movie.backdropPath}",
-                        )
-                      : Image.network(
-                          "${Constants.imagePathBaseUrl}${movie.posterPath}",
-                          fit: BoxFit.fill,
-                        )),
+                  height: 160,
+                  width: 180,
+                  child: MovieCardWidget(moviesEntity: movie)),
               SizedBox(
                 width: 10.w,
               ),

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/reusable_components/long_movie_card_widget.dart';
 import 'package:movies_app/presentation/home/tabs/browse_tab/view_model/genre_view_model.dart';
-
 import '../../../../../core/DI/di.dart';
 import '../../../../../domain/entities/MoviesGenreEntity.dart';
 
@@ -12,13 +11,14 @@ class SpecificGenreListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MoviesGenreEntity genreEntity= ModalRoute.of(context)?.settings.arguments as MoviesGenreEntity;
+    print('---*---');
+    MoviesGenreEntity? genreEntity= ModalRoute.of(context)?.settings.arguments as MoviesGenreEntity?;
     return Scaffold(
       appBar: AppBar(
-        title: Text(genreEntity.name??""),
+        title: Text(genreEntity?.name??""),
       ),
       body: BlocProvider(
-        create: (context)=>getIt<GenreViewModel>()..getSpecificGenre(genreEntity.id.toString()),
+        create: (context)=>getIt<GenreViewModel>()..getSpecificGenre((genreEntity?.id??'').toString()),
         child: BlocConsumer<GenreViewModel,GenreSelectedStates>(
           buildWhen: (prevState , currState){
             if(currState is  GenreSelectedSuccessState){

@@ -28,13 +28,17 @@ class MoviesEntity {
       this.title, 
       this.video, 
       this.voteAverage, 
-      this.voteCount,});
+      this.voteCount,
+      this.isFavorite = false,
+      this.movieID
+  });
 
 
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
   int? id;
+  String? movieID;
   String? originalLanguage;
   String? originalTitle;
   String? overview;
@@ -45,7 +49,36 @@ class MoviesEntity {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  bool? isFavorite;
 
 
+  MoviesEntity.fromFirestore(Map<String , dynamic> data){
+    id = data["id"];
+    movieID = data["movieID"];
+    title = data["title"];
+    backdropPath = data["backdropPath"];
+    releaseDate = data["releaseDate"];
+    isFavorite = data["isFavorite"];
+    posterPath = data["posterPath"];
+    voteAverage = data["voteAverage"];
+  }
+
+  Map<String , dynamic> toFirstore(){
+    print('----------');
+    print(this.id);
+    print(this.isFavorite);
+
+    Map<String , dynamic> data = {
+      "id":id,
+      "movieID":movieID,
+      "title":title,
+      "backdropPath":backdropPath,
+      "releaseDate":releaseDate,
+      "isFavorite":isFavorite,
+      "posterPath":posterPath,
+      "voteAverage":voteAverage
+    };
+    return data;
+  }
 
 }

@@ -27,7 +27,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -69,21 +72,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC05tJD6bpkaukwnlEnzVayL01tK92AHtA',
-    appId: '1:382317455568:ios:05761a3011ae86b07516d5',
+    appId: '1:382317455568:ios:4a1faa6580160ed67516d5',
     messagingSenderId: '382317455568',
     projectId: 'route-movies-app-81246',
     storageBucket: 'route-movies-app-81246.appspot.com',
-    iosBundleId: 'com.example.moviesApp',
+    iosBundleId: 'com.example.moviesApp.RunnerTests',
   );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBJBR_Vc9w9IyjNpYZ9WkjlXjvF6bVwS80',
-    appId: '1:382317455568:web:ea22ac944e5bd72f7516d5',
-    messagingSenderId: '382317455568',
-    projectId: 'route-movies-app-81246',
-    authDomain: 'route-movies-app-81246.firebaseapp.com',
-    storageBucket: 'route-movies-app-81246.appspot.com',
-    measurementId: 'G-F3QM1RNB7K',
-  );
-
 }

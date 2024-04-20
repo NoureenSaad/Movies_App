@@ -89,6 +89,10 @@ class NewReleasesModel {
     return MoviesEntity(
       id: id,
       posterPath: posterPath,
+      title: title,
+      releaseDate: releaseDate,
+      voteAverage: voteAverage,
+      adult: adult,
     );
 
 }

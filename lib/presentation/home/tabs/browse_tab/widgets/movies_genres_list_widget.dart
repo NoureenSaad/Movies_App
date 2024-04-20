@@ -67,29 +67,26 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
       builder: (context , state){
         if(state is BrowseTabSuccessState){
           // print("Success");
-          return Expanded(
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16.h,
-                    mainAxisSpacing: 10.w
-                ),
-                itemCount: state.genres.length,
-                itemBuilder: (context, index){
-                  return InkWell(
-                      onTap: (){
-                        Navigator.of(context).pushNamed(RoutesManager.specificGenreListScreen,arguments: state.genres[index]);
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: MovieGenreWidget(
-                          movieGenre: state.genres[index],
-                          imagePath: (index+1)<=imagePaths.length?imagePaths[index]:AssetsManager.defaultPhotoGenre,
-                        ),
-                      )
-                  );
-                }
-            ),
+          return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.h,
+                  mainAxisSpacing: 10.w
+              ),
+              itemCount: state.genres.length,
+              itemBuilder: (context, index){
+                return InkWell(
+                    onTap: (){Navigator.pushNamed(context, RoutesManager.specificGenreListScreen,arguments: state.genres[index]);
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: MovieGenreWidget(
+                        movieGenre: state.genres[index],
+                        imagePath: (index+1)<=imagePaths.length?imagePaths[index]:AssetsManager.defaultPhotoGenre,
+                      ),
+                    )
+                );
+              }
           );
         }
         // print("Not Success");
