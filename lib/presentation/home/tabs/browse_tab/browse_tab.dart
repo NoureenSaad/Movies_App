@@ -17,14 +17,8 @@ class BrowseTab extends StatelessWidget {
           create: (context) => getIt<BrowseTabViewModel>(), //field injection
           child: Padding(
               padding: REdgeInsets.only(top:25,left: 20,right: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(StringsManager.browseCategory,style: Theme.of(context).textTheme.headlineMedium,),
-                  SizedBox(height: 10,),
-                  MoviesGenresListWidget()
-                ],
-              ),
+              child:  const MoviesGenresListWidget(),
+
           ),
         ),
       ),
