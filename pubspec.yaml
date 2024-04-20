@@ -42,6 +42,12 @@ dependencies:
   dio: ^5.4.2+1
   either_dart: ^1.0.0
   carousel_slider: ^4.2.1
+  firebase_auth: ^4.19.2
+  firebase_core: ^2.30.0
+  provider: ^6.1.2
+  cloud_firestore: ^4.17.0
+
+
   # add injectable to your dependencies
   injectable:
   # add get_it

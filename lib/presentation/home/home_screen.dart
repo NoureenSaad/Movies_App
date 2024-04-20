@@ -2,10 +2,14 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/utils/colors_manager.dart';
+import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/home/tabs/browse_tab/browse_tab.dart';
 import 'package:movies_app/presentation/home/tabs/home_tab/home_tab.dart';
 import 'package:movies_app/presentation/home/tabs/search_tab/search_tab.dart';
 import 'package:movies_app/presentation/home/tabs/watchlist_tab/watchlist_tab.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/firebase/providers/auth_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,16 +33,31 @@ class _HomeScreenState extends State<HomeScreen> {
     Icons.collections_bookmark,
   ];
   List<String> tabsLabel = [
-    "HOME",
-    "SEARCH",
-    "BROWSE",
-    "WATCHLIST",
+    "Home",
+    "Search",
+    "Browse",
+    "WatchList",
   ];
 
   @override
   Widget build(BuildContext context) {
+    AuthProviders authProviders = Provider.of<AuthProviders>(context);
+
     return Scaffold(
       backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: Text(tabsLabel[selectedIndex]),
+        actions: [
+          IconButton(
+            onPressed: () {
+              authProviders.signOut();
+              Navigator.pushReplacementNamed(
+                  context, RoutesManager.loginRouteName);
+            },
+            icon: const Icon(Icons.logout),
+          )
+        ],
+      ),
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         height: 70.h,
         itemCount: iconsList.length,

@@ -7,7 +7,9 @@ import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/utils/assets_manager.dart';
 import 'package:movies_app/core/utils/colors_manager.dart';
 import 'package:movies_app/core/utils/strings_manager.dart';
+import 'package:provider/provider.dart';
 
+import '../../core/firebase/providers/auth_provider.dart';
 import '../../core/utils/routes_manager.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,8 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushReplacementNamed(
-          context, RoutesManager.homeScreenRoute),
+      () =>  checkAutoLogin(),
     );
   }
 
@@ -53,5 +54,15 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+  checkAutoLogin() async {
+    AuthProviders authProviders =
+    Provider.of<AuthProviders>(context, listen: false);
+    if (authProviders.isFirebaseUserLoggedIn()) {
+      await authProviders.retrieveDatabaseUserData();
+      Navigator.pushReplacementNamed(context,  RoutesManager.homeScreenRoute);
+    } else {
+      Navigator.pushReplacementNamed(context, RoutesManager.loginRouteName);
+    }
   }
 }

@@ -4,14 +4,17 @@ import 'package:movies_app/core/utils/colors_manager.dart';
 class AppTheme{
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: ColorsManager.lightPrimaryColor,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       color: Colors.transparent,
-      centerTitle: true,
       titleTextStyle: TextStyle(
         color: Colors.white,
         fontSize: 24,
         fontWeight: FontWeight.w500
-      )
+      ),
+      actionsIconTheme: IconThemeData(
+        color: ColorsManager.selectedTabColor,
+        size: 24,
+      ),
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.lightPrimaryColor,
@@ -39,6 +42,26 @@ class AppTheme{
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
+      //used in text form field
+      labelSmall: TextStyle(
+        color: ColorsManager.selectedTabColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
     ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: ColorsManager.selectedTabColor,
+        iconSize: 20,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ColorsManager.selectedTabColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      )
+    )
   );
 }
