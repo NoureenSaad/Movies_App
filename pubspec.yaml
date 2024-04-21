@@ -53,6 +53,7 @@ dependencies:
   # add get_it
   get_it:
   flutter_bloc: ^8.1.5
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:

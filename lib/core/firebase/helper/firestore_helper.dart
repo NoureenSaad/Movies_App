@@ -52,13 +52,8 @@ class FireStoreHelper {
 
   static Future<void> addToWatchList(String userID, MoviesEntity movie) async {
     var reference = getWatchList(userID);
-    print(reference.id);
     var movieDocument = reference.doc();
-    print(movieDocument.id);
     movie.movieID = movieDocument.id;
-    print('--->'+movie.isFavorite.toString());
-    print(movie.releaseDate);
-    print(movie.title);
     await movieDocument.set(movie);
   }
 
@@ -71,6 +66,17 @@ class FireStoreHelper {
 
   static Future<void> deleteMovie(String userID, String movieID) async {
     await getWatchList(userID).doc(movieID).delete();
+  }
+
+  static Stream<MoviesEntity> isFavoriteCheck(
+      {required String userID, required String id}) async* {
+    DocumentReference<MoviesEntity> filter =
+    getWatchList(userID).doc(id);
+
+    Stream<MoviesEntity> snapshot = filter
+        .snapshots()
+        .map((event) => event.data() ?? MoviesEntity(isFavorite: false));
+    yield* snapshot;
   }
 
   static Stream<List<MoviesEntity>> ListenToWatchList(String userID) async*{

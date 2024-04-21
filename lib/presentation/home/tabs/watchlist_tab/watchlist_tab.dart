@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
 import 'package:movies_app/core/firebase/providers/auth_provider.dart';
 import 'package:movies_app/core/reusable_components/long_movie_card_widget.dart';
@@ -36,9 +37,18 @@ class WatchListTab extends StatelessWidget {
           }
           // Data Returned Successfully
           List<MoviesEntity> movies = snapshot.data??[];
-          return ListView.builder(
-            itemBuilder: (context,index)=>LongMovieCardWidget(
-              movie: movies[index],
+          return ListView.separated(
+            separatorBuilder: (context,index)=>Container(color: Colors.white.withOpacity(0.4),height: 1.h,width: double.infinity,),
+            itemBuilder: (context,index)=>InkWell(
+              onTap: (){
+                //todo: navigate to details
+              },
+              child: Padding(
+                padding: REdgeInsets.all(16),
+                child: LongMovieCardWidget(
+                  movie: movies[index],
+                ),
+              ),
             ),
             itemCount: movies.length,
           );

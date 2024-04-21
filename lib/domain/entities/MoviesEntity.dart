@@ -64,10 +64,6 @@ class MoviesEntity {
   }
 
   Map<String , dynamic> toFirstore(){
-    print('----------');
-    print(this.id);
-    print(this.isFavorite);
-
     Map<String , dynamic> data = {
       "id":id,
       "movieID":movieID,

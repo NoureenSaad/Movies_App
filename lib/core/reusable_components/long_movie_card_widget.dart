@@ -6,11 +6,16 @@ import 'package:movies_app/core/reusable_functions/reusable_functions.dart';
 import '../../domain/entities/MoviesEntity.dart';
 import '../utils/colors_manager.dart';
 
-class LongMovieCardWidget extends StatelessWidget {
+class LongMovieCardWidget extends StatefulWidget {
   MoviesEntity movie;
 
   LongMovieCardWidget({super.key, required this.movie});
 
+  @override
+  State<LongMovieCardWidget> createState() => _LongMovieCardWidgetState();
+}
+
+class _LongMovieCardWidgetState extends State<LongMovieCardWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +30,7 @@ class LongMovieCardWidget extends StatelessWidget {
               SizedBox(
                   height: 160,
                   width: 180,
-                  child: MovieCardWidget(moviesEntity: movie)),
+                  child: MovieCardWidget(moviesEntity: widget.movie)),
               SizedBox(
                 width: 10.w,
               ),
@@ -34,7 +39,7 @@ class LongMovieCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${movie.title}",
+                      "${widget.movie.title}",
                       style: Theme.of(context).textTheme.titleMedium,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -44,7 +49,7 @@ class LongMovieCardWidget extends StatelessWidget {
                     ),
                     Text(
                       ReusableFunctions.extractYear(
-                          movie.releaseDate.toString()),
+                          widget.movie.releaseDate.toString()),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     SizedBox(
@@ -60,7 +65,7 @@ class LongMovieCardWidget extends StatelessWidget {
                           width: 5.w,
                         ),
                         Text(
-                          "${movie.voteAverage?.toStringAsFixed(1)}",
+                          "${widget.movie.voteAverage?.toStringAsFixed(1)}",
                           style: GoogleFonts.poppins(
                               textStyle:
                                   Theme.of(context).textTheme.headlineSmall),

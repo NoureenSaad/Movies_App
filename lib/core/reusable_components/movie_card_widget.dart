@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants.dart';
 import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
 import 'package:movies_app/core/firebase/providers/auth_provider.dart';
@@ -9,11 +10,16 @@ import 'package:provider/provider.dart';
 
 import '../utils/colors_manager.dart';
 
-class MovieCardWidget extends StatelessWidget {
+class MovieCardWidget extends StatefulWidget {
   MoviesEntity moviesEntity;
 
   MovieCardWidget({super.key, required this.moviesEntity});
 
+  @override
+  State<MovieCardWidget> createState() => _MovieCardWidgetState();
+}
+
+class _MovieCardWidgetState extends State<MovieCardWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -22,38 +28,49 @@ class MovieCardWidget extends StatelessWidget {
         children: [
           Image.network(
             height: 199.h,
-            '${Constants.imagePathBaseUrl}${moviesEntity.posterPath}',
+            '${Constants.imagePathBaseUrl}${widget.moviesEntity.posterPath}',
           ),
-          Positioned(
-            top: -7.h,
-            left: -11.h,
-            child: Stack(
-              children: [
-                Icon(
-                  Icons.bookmark,
-                  color: ColorsManager.bookmarkIconColor.withOpacity(0.8),
-                  size: 50.sp,
-                ),
-                IconButton(
-                  onPressed: () {
-                    if(moviesEntity.isFavorite??false){
-
-                    }
-                    else{
-                      FireStoreHelper.addToWatchList(FirebaseAuth.instance.currentUser!.uid, moviesEntity);
-
-                    }
-
-                  },
-                  icon: Icon(
-                    Icons.favorite,
-                    color: (moviesEntity.isFavorite??false)?ColorsManager.selectedTabColor:Colors.white,
-                    size: 15.sp,
-                  ),
-                ),
-              ],
+          ElevatedButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all(REdgeInsets.only(right: 30,bottom: 48)),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
+              backgroundColor: MaterialStateProperty.all(Colors.transparent),
             ),
-          ),
+              onPressed: () {
+                  if (widget.moviesEntity.isFavorite ?? false) {
+                    setState(() {
+                      FireStoreHelper.deleteMovie(
+                          FirebaseAuth.instance.currentUser!.uid,
+                          widget.moviesEntity.id.toString());
+                    });
+                  } else {
+                    setState(() {
+                      FireStoreHelper.addToWatchList(
+                          FirebaseAuth.instance.currentUser!.uid,
+                          MoviesEntity(
+                              id: widget.moviesEntity.id,
+                              voteAverage: widget.moviesEntity.voteAverage,
+                              posterPath: widget.moviesEntity.posterPath,
+                              isFavorite: true,
+                              releaseDate: widget.moviesEntity.releaseDate,
+                              title: widget.moviesEntity.title
+                          ));
+                    });
+                  }
+              },
+              child: StreamBuilder(
+                  stream: FireStoreHelper.isFavoriteCheck(userID: FirebaseAuth.instance.currentUser!.uid, id: widget.moviesEntity.id.toString()),
+                  builder: (context , snapshot){
+                    MoviesEntity movie = snapshot.data?? MoviesEntity();
+                    bool isFavorite = movie.isFavorite!;
+                    return SvgPicture.asset(
+                      (isFavorite)
+                          ? "assets/images/favorite.svg"
+                          : "assets/images/not_favorite.svg",
+                    );
+                  }
+              )
+            )
         ],
       ),
     );
