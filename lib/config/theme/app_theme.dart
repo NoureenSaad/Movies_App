@@ -56,6 +56,12 @@ class AppTheme{
         fontSize: 14,
         fontWeight: FontWeight.w600,
       ),
+      titleSmall: TextStyle(
+        fontFamily: 'inter',
+        color: ColorsManager.movieDetailsTextColor,
+        fontWeight: FontWeight.w400,
+        fontSize:  18 ,
+      ),
     ),
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
@@ -63,12 +69,7 @@ class AppTheme{
         iconSize: 20,
       ),
       // for details screen
-      titleSmall: TextStyle(
-        fontFamily: 'inter',
-        color: ColorsManager.movieDetailsTextColor,
-        fontWeight: FontWeight.w400,
-        fontSize:  18 ,
-      ),
+
 
 
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/presentation/home/tabs/search_tab/search_viewModel.dart';
 import '../../../../core/DI/di.dart';
@@ -15,16 +16,16 @@ class SearchScreen extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: REdgeInsets.all(8.0),
             child: TextField(
               onChanged: (value) {
                 BlocProvider.of<SearchViewModel>(context).search(value);
               },
               decoration: InputDecoration(
                 hintText: 'Search for movies...',
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: const TextStyle(color: Colors.white),
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: REdgeInsets.all(8.0),
                   child: SvgPicture.asset('assets/svg/Search.svg'),
                 ),
               ),
@@ -33,12 +34,8 @@ class SearchScreen extends StatelessWidget {
           Expanded(
             child: BlocBuilder<SearchViewModel, SearchState>(
               builder: (context, state) {
-                if (state is SearchLoadingState) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (state is SearchSuccessState) {
-                  return const LongMovieCardWidget();
+                if (state is SearchSuccessState) {
+
                 } else if (state is SearchErrorState) {
                   return Center(
                     child: Text(
@@ -46,9 +43,10 @@ class SearchScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   );
-                } else {
-                  return Container();
                 }
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
               },
             ),
           ),
