@@ -18,7 +18,8 @@ class AppTheme{
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorsManager.lightPrimaryColor,
-      primary: ColorsManager.lightPrimaryColor
+      primary: ColorsManager.lightPrimaryColor,
+      secondary: ColorsManager.detailsmovieColor
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
@@ -41,6 +42,13 @@ class AppTheme{
         color: Colors.white,
         fontSize: 14,
         fontWeight: FontWeight.w400,
+
+      ),
+      titleLarge: TextStyle(
+        fontFamily: 'inter',
+        color: Colors.white,
+        fontWeight: FontWeight.w400,
+        fontSize:  18 ,
       ),
       //used in text form field
       labelSmall: TextStyle(
@@ -54,6 +62,16 @@ class AppTheme{
         foregroundColor: ColorsManager.selectedTabColor,
         iconSize: 20,
       ),
+      // for details screen
+      titleSmall: TextStyle(
+        fontFamily: 'inter',
+        color: ColorsManager.movieDetailsTextColor,
+        fontWeight: FontWeight.w400,
+        fontSize:  18 ,
+      ),
+
+
+
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

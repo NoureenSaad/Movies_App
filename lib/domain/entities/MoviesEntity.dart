@@ -1,3 +1,5 @@
+import 'package:movies_app/data/model/MovieDetailsResponse/Genres.dart';
+
 /// adult : false
 /// backdrop_path : "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg"
 /// genre_ids : [18,80]
@@ -30,7 +32,8 @@ class MoviesEntity {
       this.voteAverage, 
       this.voteCount,
       this.isFavorite = false,
-      this.movieID
+      this.movieID,
+      List<Genres>? genres,
   });
 
 

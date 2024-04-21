@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/domain/entities/MoviesEntity.dart';
+import 'package:movies_app/presentation/home/details/movie_details/view_model/similar_movie_viewmodel.dart';
 import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
 import '../../../../../../core/utils/colors_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
-import '../view_model/recommended_movies_view_model.dart';
 
-class RecommendListWidget extends StatelessWidget {
-  const RecommendListWidget({super.key});
-
+class SimilarListMovie extends StatelessWidget {
+   SimilarListMovie({super.key, required this.moviesEntity});
+MoviesEntity moviesEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,12 +23,12 @@ class RecommendListWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringsManager.recommended,
+              StringsManager.moreLikeThis,
               style: GoogleFonts.inter(
                 textStyle: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      color: Colors.white,
-                      fontSize: 24.sp,
-                    ),
+                  color: Colors.white,
+                  fontSize: 24.sp,
+                ),
               ),
             ),
             SizedBox(
@@ -35,17 +36,17 @@ class RecommendListWidget extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) =>
-                  getIt<RecommendedMoviesViewModel>()..getRecommendedMovie(),
-              child: BlocBuilder<RecommendedMoviesViewModel,
-                  RecommendedMoviesStates>(builder: (context, state) {
-                if (state is RecommendedMoviesSuccessState) {
+              getIt<SimilarMoviesViewModel>()..fetchSimilarMovies(moviesEntity.id as int ),
+              child: BlocBuilder<SimilarMoviesViewModel,
+                  SimilarMoviesState>(builder: (context, state) {
+                if (state is SimilarMoviesSucess) {
                   return Expanded(
                     child: ListView.separated(
                       separatorBuilder: (context, index) => SizedBox(
                         width: 14.w,
                       ),
                       scrollDirection: Axis.horizontal,
-                      itemCount: state.recommendedMovies.length,
+                      itemCount: state.similarMovies.length,
                       itemBuilder: (context, index) {
                         return SizedBox(
                           width: 100.w,
@@ -60,7 +61,7 @@ class RecommendListWidget extends StatelessWidget {
                                   },
                                   child: MovieCardWidget(
                                     moviesEntity:
-                                        state.recommendedMovies[index],
+                                    state.similarMovies[index],
                                   ),
                                 ),
                               ),
@@ -74,16 +75,16 @@ class RecommendListWidget extends StatelessWidget {
                                     width: 5.w,
                                   ),
                                   Text(
-                                    state.recommendedMovies[index].voteAverage!
+                                    state.similarMovies[index].voteAverage!
                                         .toStringAsFixed(1),
                                     style: GoogleFonts.poppins(
                                         textStyle: Theme.of(context)
                                             .textTheme
                                             .headlineSmall!
                                             .copyWith(
-                                              color: Colors.white,
-                                              fontSize: 10.sp,
-                                            )),
+                                          color: Colors.white,
+                                          fontSize: 10.sp,
+                                        )),
                                   ),
                                 ],
                               ),
@@ -91,7 +92,7 @@ class RecommendListWidget extends StatelessWidget {
                                 height: 2.h,
                               ),
                               Text(
-                                state.recommendedMovies[index].title.toString(),
+                                state.similarMovies[index].title.toString(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.poppins(
@@ -99,9 +100,9 @@ class RecommendListWidget extends StatelessWidget {
                                       .textTheme
                                       .headlineSmall!
                                       .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 10.sp,
-                                      ),
+                                    color: Colors.white,
+                                    fontSize: 10.sp,
+                                  ),
                                 ),
                               ),
 
@@ -111,10 +112,10 @@ class RecommendListWidget extends StatelessWidget {
                       },
                     ),
                   );
-                } else if (state is RecommendedMoviesErrorState) {
+                } else if (state is SimilarMoviesError) {
                   return Center(
                     child: Text(
-                      state.error,
+                      state.message,
                       style: const TextStyle(
                         color: Colors.white,
                       ),

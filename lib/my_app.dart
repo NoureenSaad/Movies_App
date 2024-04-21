@@ -4,6 +4,7 @@ import 'package:movies_app/config/theme/app_theme.dart';
 import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/auth/login/login_screen.dart';
 import 'package:movies_app/presentation/auth/register/register_screen.dart';
+import 'package:movies_app/presentation/home/details/movie_details/widgets/movie_details_widget.dart';
 import 'package:movies_app/presentation/home/home_screen.dart';
 import 'package:movies_app/presentation/home/tabs/browse_tab/widgets/specific_genre_list_widget.dart';
 
@@ -27,10 +28,12 @@ class MyApp extends StatelessWidget {
           routes: {
             RoutesManager.homeScreenRoute: (_) => const HomeScreen(),
             RoutesManager.splashScreenRoute: (_) => const SplashScreen(),
-            RoutesManager.specificGenreListScreen: (_) =>
-                const SpecificGenreListWidget(),
+            RoutesManager.specificGenreListScreen: (_) => const SpecificGenreListWidget(),
             RoutesManager.registerRouteName: (_) => RegisterScreen(),
             RoutesManager.loginRouteName: (_) => LoginScreen(),
+            RoutesManager.homeScreenRoute:(_)=>const HomeScreen(),
+            RoutesManager.splashScreenRoute:(_)=>const SplashScreen(),
+            // RoutesManager.DetailsMoviesRoute:(_)=> const MovieDetailsScreen(movieId: mov,)
           },
         );
       },
