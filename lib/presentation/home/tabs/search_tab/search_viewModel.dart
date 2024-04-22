@@ -9,9 +9,14 @@ class SearchViewModel extends Cubit<SearchState>{
   @factoryMethod
   SearchViewModel(this.searchUseCase):super(SearchInitState());
   search(String query) async {
+    emit(SearchLoadingState());
     var result = await searchUseCase.search(query);
     return result.fold(
-            (moviesList) => emit(SearchSuccessState(moviesList)),
+            (moviesList) {
+              print('--**---');
+              print(moviesList.length);
+              emit(SearchSuccessState(moviesList));
+            },
             (error) => emit(SearchErrorState(error))
     );
   }

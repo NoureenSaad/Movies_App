@@ -2,9 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/home/tabs/home_tab/popular_movies/widgets/popular_movie_widget.dart';
 
 import '../../../../../../core/DI/di.dart';
+import '../../../../details/movie_details/widgets/movie_details_widget.dart';
 import '../view_model/popular_movies_view_model.dart';
 
 class PopularMoviesSliderWidget extends StatelessWidget {
@@ -26,13 +28,8 @@ class PopularMoviesSliderWidget extends StatelessWidget {
               ),
             itemCount: state.popularMovies.length,
             itemBuilder: (context, index, index2) {
-              return InkWell(
-                onTap: (){
-
-                },
-                child: PopularMovieWidget(
-                  moviesEntity: state.popularMovies[index],
-                ),
+              return PopularMovieWidget(
+                moviesEntity: state.popularMovies[index],
               );
             },
           );

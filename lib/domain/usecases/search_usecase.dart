@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import '../entities/MoviesEntity.dart';
 import '../repository_contract/search_repo.dart';
 @injectable
-class SearchUseCase  {
+class SearchUseCase{
   SearchRepo searchRepo ;
   @factoryMethod
   SearchUseCase(this.searchRepo);

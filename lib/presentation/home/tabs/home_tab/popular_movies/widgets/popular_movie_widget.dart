@@ -23,7 +23,6 @@ class PopularMovieWidget extends StatelessWidget {
         ReusableFunctions.getMovieClassification(moviesEntity.adult ?? false);
     return InkWell(
       onTap: () {
-        // Navigate to movie details screen if movieId is not null لا سمح الله يعني
         if (moviesEntity.id != null) {
           Navigator.push(
             context,
@@ -32,7 +31,6 @@ class PopularMovieWidget extends StatelessWidget {
             ),
           );
         } else {
-
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Movie ID is null'),
@@ -64,7 +62,7 @@ class PopularMovieWidget extends StatelessWidget {
                     width: 14.w,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
+                    padding: REdgeInsets.only(
                       top: 130,
                       left: 10,
                     ),
@@ -84,7 +82,6 @@ class PopularMovieWidget extends StatelessWidget {
                           height: 10.w,
                         ),
                         Text(
-                          //Todo: waiting movie time from Haneen
                           '$movieYear  $movieClassification  2h 7m',
                           style: GoogleFonts.inter(
                             textStyle: Theme.of(context)

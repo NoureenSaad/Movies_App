@@ -8,6 +8,7 @@ import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
 import '../../../../../../core/utils/colors_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
+import '../../../../../core/reusable_functions/reusable_functions.dart';
 
 class SimilarListMovie extends StatelessWidget {
    SimilarListMovie({super.key, required this.moviesEntity});
@@ -55,14 +56,9 @@ MoviesEntity moviesEntity;
                             children: [
                               SizedBox(
                                 height: 150.h,
-                                child: InkWell(
-                                  onTap: () {
-                                    //Todo: navigate to movie details
-                                  },
-                                  child: MovieCardWidget(
-                                    moviesEntity:
-                                    state.similarMovies[index],
-                                  ),
+                                child: MovieCardWidget(
+                                  moviesEntity:
+                                  state.similarMovies[index],
                                 ),
                               ),
                               Row(
@@ -101,6 +97,22 @@ MoviesEntity moviesEntity;
                                       .headlineSmall!
                                       .copyWith(
                                     color: Colors.white,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Text(
+                                '${ReusableFunctions.extractYear(state.similarMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.similarMovies[index].adult ?? false)} ',
+                                style: GoogleFonts.inter(
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium!
+                                      .copyWith(
+                                    color:
+                                    ColorsManager.movieDetailsTextColor,
                                     fontSize: 10.sp,
                                   ),
                                 ),

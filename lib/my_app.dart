@@ -31,9 +31,6 @@ class MyApp extends StatelessWidget {
             RoutesManager.specificGenreListScreen: (_) => const SpecificGenreListWidget(),
             RoutesManager.registerRouteName: (_) => RegisterScreen(),
             RoutesManager.loginRouteName: (_) => LoginScreen(),
-            RoutesManager.homeScreenRoute:(_)=>const HomeScreen(),
-            RoutesManager.splashScreenRoute:(_)=>const SplashScreen(),
-            // RoutesManager.DetailsMoviesRoute:(_)=> const MovieDetailsScreen(movieId: mov,)
           },
         );
       },

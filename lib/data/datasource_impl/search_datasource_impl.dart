@@ -22,8 +22,6 @@ class SearchDatasourceImpl extends SearchDatasourceContract {
       var response = await apiManager.getRequest(
           endpoint: "${Endpoints.searchMovie}",
           queryParameters: {"api_key": Constants.apiKey, "query": query});
-      print(response.statusCode);
-      print("result : $response");
       var searchResponse = SearchResponse.fromJson(response.data);
       return Left(searchResponse);
     } catch (error) {

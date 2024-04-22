@@ -5,6 +5,7 @@ import 'package:movies_app/core/reusable_components/long_movie_card_widget.dart'
 import 'package:movies_app/presentation/home/tabs/browse_tab/view_model/genre_view_model.dart';
 import '../../../../../core/DI/di.dart';
 import '../../../../../domain/entities/MoviesGenreEntity.dart';
+import '../../../details/movie_details/widgets/movie_details_widget.dart';
 
 class SpecificGenreListWidget extends StatelessWidget {
   const SpecificGenreListWidget({super.key });
@@ -40,7 +41,23 @@ class SpecificGenreListWidget extends StatelessWidget {
                   itemBuilder: (context, index){
                     return InkWell(
                       onTap: (){
-                        //todo: navigate to details
+                        if (state.specificGenre[index].id != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailsScreen(
+                                movieId: state.specificGenre[index].id!,
+                                moviesEntity: state.specificGenre[index],
+                              ),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Movie ID is null'),
+                            ),
+                          );
+                        }
                       },
                       child: Padding(
                         padding: REdgeInsets.all(16.0),

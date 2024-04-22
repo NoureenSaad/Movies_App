@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> tabs = [
     HomeTab(),
-    SearchScreen(),
+    SearchTab(),
     BrowseTab(),
     WatchListTab(),
   ];

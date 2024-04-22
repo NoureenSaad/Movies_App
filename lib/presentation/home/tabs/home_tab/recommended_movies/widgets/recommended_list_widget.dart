@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../core/DI/di.dart';
 import '../../../../../../core/reusable_components/movie_card_widget.dart';
+import '../../../../../../core/reusable_functions/reusable_functions.dart';
 import '../../../../../../core/utils/colors_manager.dart';
 import '../../../../../../core/utils/strings_manager.dart';
 import '../view_model/recommended_movies_view_model.dart';
@@ -54,14 +56,9 @@ class RecommendListWidget extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height: 150.h,
-                                child: InkWell(
-                                  onTap: () {
-                                    //Todo: navigate to movie details
-                                  },
-                                  child: MovieCardWidget(
-                                    moviesEntity:
-                                        state.recommendedMovies[index],
-                                  ),
+                                child: MovieCardWidget(
+                                  moviesEntity:
+                                      state.recommendedMovies[index],
                                 ),
                               ),
                               Row(
@@ -85,6 +82,7 @@ class RecommendListWidget extends StatelessWidget {
                                               fontSize: 10.sp,
                                             )),
                                   ),
+
                                 ],
                               ),
                               SizedBox(
@@ -102,6 +100,22 @@ class RecommendListWidget extends StatelessWidget {
                                         color: Colors.white,
                                         fontSize: 10.sp,
                                       ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2.h,
+                              ),
+                              Text(
+                                '${ReusableFunctions.extractYear(state.recommendedMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.recommendedMovies[index].adult ?? false)} ',
+                                style: GoogleFonts.inter(
+                                  textStyle: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium!
+                                      .copyWith(
+                                    color:
+                                    ColorsManager.movieDetailsTextColor,
+                                    fontSize: 10.sp,
+                                  ),
                                 ),
                               ),
 
