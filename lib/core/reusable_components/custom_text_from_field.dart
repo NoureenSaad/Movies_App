@@ -10,16 +10,18 @@ class CustomTextFormField extends StatelessWidget {
   TextInputType keyboardType;
   TextEditingController controller;
   bool obscureText;
-  fieldValidation validator;
+  fieldValidation? validator;
+  Widget? prefixIcon;
 
   CustomTextFormField({
     super.key,
     required this.hintText,
     required this.keyboardType,
     required this.controller,
-    required this.validator,
+    this.validator,
     this.suffixIcon,
     this.obscureText = false,
+    this.prefixIcon
   });
 
   @override
@@ -43,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
           borderSide: BorderSide(color: Colors.black),
         ),
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         hintText: hintText,
         hintStyle: AppTheme.lightTheme.textTheme.labelSmall?.copyWith(
           color: Colors.black,

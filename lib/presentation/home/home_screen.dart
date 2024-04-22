@@ -1,11 +1,14 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/DI/di.dart';
 import 'package:movies_app/core/utils/colors_manager.dart';
 import 'package:movies_app/core/utils/routes_manager.dart';
 import 'package:movies_app/presentation/home/tabs/browse_tab/browse_tab.dart';
 import 'package:movies_app/presentation/home/tabs/home_tab/home_tab.dart';
 import 'package:movies_app/presentation/home/tabs/search_tab/search_tab.dart';
+import 'package:movies_app/presentation/home/tabs/search_tab/search_viewModel.dart';
 import 'package:movies_app/presentation/home/tabs/watchlist_tab/watchlist_tab.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> tabs = [
     HomeTab(),
-    SearchTab(),
+    BlocProvider(
+      create: (context) => getIt<SearchViewModel>(),
+      child: SearchTab()
+    ),
     BrowseTab(),
     WatchListTab(),
   ];

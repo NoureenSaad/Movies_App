@@ -35,7 +35,7 @@ class LongMovieCardWidget extends StatelessWidget {
         }
       },
       child: SizedBox(
-        height: 160.h,
+        height: 180.h,
         width: 358.w,
         child: Column(
           children: [
