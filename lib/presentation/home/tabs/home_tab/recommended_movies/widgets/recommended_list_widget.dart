@@ -56,9 +56,14 @@ class RecommendListWidget extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height: 150.h,
-                                child: MovieCardWidget(
-                                  moviesEntity:
-                                      state.recommendedMovies[index],
+                                child: InkWell(
+                                  onTap: () {
+                                    //Todo: navigate to movie details
+                                  },
+                                  child: MovieCardWidget(
+                                    moviesEntity:
+                                        state.recommendedMovies[index],
+                                  ),
                                 ),
                               ),
                               Row(
@@ -82,7 +87,6 @@ class RecommendListWidget extends StatelessWidget {
                                               fontSize: 10.sp,
                                             )),
                                   ),
-
                                 ],
                               ),
                               SizedBox(

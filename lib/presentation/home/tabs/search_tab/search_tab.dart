@@ -43,10 +43,13 @@ class _SearchTabState extends State<SearchTab> {
               prefixIcon: Padding(
                 padding: REdgeInsets.all(8.0),
                 child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       SearchViewModel.get(context).search(textCon.text);
                     },
-                    child: const Icon(Icons.search,color: Colors.white,)),
+                    child: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    )),
               ),
             ),
           ),
@@ -82,9 +85,18 @@ class _SearchTabState extends State<SearchTab> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.movie,color: Colors.white,size: 130,),
-                  SizedBox(height: 12.h,),
-                  Text("No Movies Found",style: TextStyle(color: Colors.white,fontSize: 20.sp),)
+                  const Icon(
+                    Icons.movie,
+                    color: Colors.white,
+                    size: 130,
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Text(
+                    "No Movies Found",
+                    style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                  )
                 ],
               ),
             );
@@ -94,20 +106,3 @@ class _SearchTabState extends State<SearchTab> {
     );
   }
 }
-
-/*TextField(
-                style: TextStyle(color: Colors.white),
-                controller: textCon,
-                decoration: InputDecoration(
-                  hintText: 'Search for movies...',
-                  hintStyle: const TextStyle(color: Colors.white),
-                  prefixIcon: Padding(
-                    padding: REdgeInsets.all(8.0),
-                    child: InkWell(
-                        onTap: (){
-                          SearchViewModel.get(context).search(textCon.text);
-                        },
-                        child: Icon(Icons.search)),
-                  ),
-                ),
-              )*/

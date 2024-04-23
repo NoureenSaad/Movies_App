@@ -1,13 +1,12 @@
 import 'SearchModel.dart';
 
-
-
 class SearchResponse {
   SearchResponse({
     this.page,
     this.results,
     this.totalPages,
-    this.totalResults,});
+    this.totalResults,
+  });
 
   SearchResponse.fromJson(dynamic json) {
     page = json['page'];
@@ -20,6 +19,7 @@ class SearchResponse {
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
+
   int? page;
   List<SearchResults>? results;
   int? totalPages;
@@ -35,5 +35,4 @@ class SearchResponse {
     map['total_results'] = totalResults;
     return map;
   }
-
 }

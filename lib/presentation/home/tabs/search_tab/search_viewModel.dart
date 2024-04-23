@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../domain/entities/MoviesEntity.dart';
 import '../../../../domain/usecases/search_usecase.dart';
 
@@ -22,6 +23,7 @@ class SearchViewModel extends Cubit<SearchState> {
       emit(SearchErrorState(error));
     });
   }
+
 }
 
 abstract class SearchState {}

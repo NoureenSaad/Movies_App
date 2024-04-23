@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants.dart';
 import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
+import 'package:movies_app/core/firebase/providers/auth_provider.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../presentation/home/details/movie_details/widgets/movie_details_widget.dart';
 

@@ -1,3 +1,5 @@
+import '../../../domain/entities/MoviesEntity.dart';
+
 /// adult : false
 /// backdrop_path : null
 /// genre_ids : []
@@ -74,6 +76,19 @@ class SearchResults {
     map['vote_average'] = voteAverage;
     map['vote_count'] = voteCount;
     return map;
+  }
+  MoviesEntity toSearchEntity(){
+    return MoviesEntity(
+        title: title,
+        adult: adult,
+        id: id,
+        originalTitle: originalTitle,
+        voteAverage: voteAverage,
+        overview: overview,
+        posterPath: posterPath,
+        releaseDate: releaseDate,
+        backdropPath: backdropPath
+    );
   }
 
 }

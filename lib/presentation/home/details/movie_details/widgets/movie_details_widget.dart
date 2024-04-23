@@ -26,7 +26,7 @@ class MovieDetailsScreen extends StatelessWidget {
     Key? key,
     required this.movieId,
     this.adult,
-     required this.moviesEntity, // Making adult parameter optional
+    required this.moviesEntity, // Making adult parameter optional
   }) : super(key: key);
 
   @override
@@ -289,8 +289,9 @@ class MovieDetailsScreen extends StatelessWidget {
           height: 8,
         )),
         SliverToBoxAdapter(
-            child: SimilarListMovie(moviesEntity: moviesEntity,))
-
+            child: SimilarListMovie(
+          moviesEntity: moviesEntity,
+        ))
       ]),
     );
   }
