@@ -18,7 +18,22 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
     AssetsManager.actionGenre,
     AssetsManager.adventureGenre,
     AssetsManager.animationGenre,
-    AssetsManager.comedyGenre
+    AssetsManager.comedyGenre,
+    AssetsManager.crimeGenre,
+    AssetsManager.docGenre,
+    AssetsManager.dramaGenre,
+    AssetsManager.familyGenre,
+    AssetsManager.fantasyGenre,
+    AssetsManager.historyGenre,
+    AssetsManager.horrorGenre,
+    AssetsManager.musicGenre,
+    AssetsManager.mysteryGenre,
+    AssetsManager.romanceGenre,
+    AssetsManager.sfGenre,
+    AssetsManager.tvGenre,
+    AssetsManager.thrillerGenre,
+    AssetsManager.warGenre,
+    AssetsManager.westernGenre
   ];
 
   @override
@@ -98,9 +113,7 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
                       borderRadius: BorderRadius.circular(15),
                       child: MovieGenreWidget(
                         movieGenre: state.genres[index],
-                        imagePath: (index + 1) <= imagePaths.length
-                            ? imagePaths[index]
-                            : AssetsManager.defaultPhotoGenre,
+                        imagePath: imagePaths[index],
                       ),
                     ));
               });

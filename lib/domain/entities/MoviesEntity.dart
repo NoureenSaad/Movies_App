@@ -32,7 +32,6 @@ class MoviesEntity {
       this.voteAverage, 
       this.voteCount,
       this.isFavorite = false,
-      this.movieID,
       List<Genres>? genres,
   });
 
@@ -41,7 +40,6 @@ class MoviesEntity {
   String? backdropPath;
   List<int>? genreIds;
   int? id;
-  String? movieID;
   String? originalLanguage;
   String? originalTitle;
   String? overview;
@@ -57,7 +55,6 @@ class MoviesEntity {
 
   MoviesEntity.fromFirestore(Map<String , dynamic> data){
     id = data["id"];
-    movieID = data["movieID"];
     title = data["title"];
     backdropPath = data["backdropPath"];
     releaseDate = data["releaseDate"];
@@ -69,7 +66,6 @@ class MoviesEntity {
   Map<String , dynamic> toFirstore(){
     Map<String , dynamic> data = {
       "id":id,
-      "movieID":movieID,
       "title":title,
       "backdropPath":backdropPath,
       "releaseDate":releaseDate,

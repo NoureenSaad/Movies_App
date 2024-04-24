@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:injectable/injectable.dart';
 import '../../../data/model/user_model/user_model.dart';
 import '../../../domain/entities/MoviesEntity.dart';
 
+@singleton
 class FireStoreHelper {
   //create users collection if there is no collection with that name
   static CollectionReference<UserModel> getUserCollection() {
@@ -51,10 +51,7 @@ class FireStoreHelper {
   }
 
   static Future<void> addToWatchList(String userID, MoviesEntity movie) async {
-    var reference = getWatchList(userID);
-    var movieDocument = reference.doc();
-    movie.movieID = movieDocument.id;
-    await movieDocument.set(movie);
+    var reference = getWatchList(userID).doc(movie.id.toString()).set(movie);
   }
 
   static Future<List<MoviesEntity>> getAllMovies(String userID) async {
@@ -70,16 +67,14 @@ class FireStoreHelper {
 
   static Stream<MoviesEntity> isFavoriteCheck(
       {required String userID, required String id}) async* {
-    DocumentReference<MoviesEntity> filter =
-    getWatchList(userID).doc(id);
-
+    DocumentReference<MoviesEntity> filter = getWatchList(userID).doc(id);
     Stream<MoviesEntity> snapshot = filter
         .snapshots()
         .map((event) => event.data() ?? MoviesEntity(isFavorite: false));
     yield* snapshot;
   }
 
-  static Stream<List<MoviesEntity>> ListenToWatchList(String userID) async*{
+   Stream<List<MoviesEntity>> ListenToWatchList(String userID) async*{
     Stream<QuerySnapshot<MoviesEntity>> movieQueryStream =
         getWatchList(userID).snapshots();
     Stream<List<MoviesEntity>> movieStream = movieQueryStream.map(

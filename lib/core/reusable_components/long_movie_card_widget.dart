@@ -36,16 +36,16 @@ class LongMovieCardWidget extends StatelessWidget {
       },
       child: SizedBox(
         height: 180.h,
-        width: 358.w,
+        width: 300.w,
         child: Column(
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
-                    height: 160,
-                    width: 180,
+                    height: 170,
+                    width: 120,
                     child: MovieCardWidget(moviesEntity: movie)),
                 SizedBox(
                   width: 10.w,
@@ -82,9 +82,7 @@ class LongMovieCardWidget extends StatelessWidget {
                           ),
                           Text(
                             "${movie.voteAverage?.toStringAsFixed(1)}",
-                            style: GoogleFonts.poppins(
-                                textStyle:
-                                    Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.headlineSmall
                           ),
                         ],
                       ),

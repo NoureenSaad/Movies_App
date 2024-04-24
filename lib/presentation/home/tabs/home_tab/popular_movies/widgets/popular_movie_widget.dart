@@ -9,11 +9,9 @@ import '../../../../../../core/utils/colors_manager.dart';
 import '../../../../details/movie_details/widgets/movie_details_widget.dart';
 
 class PopularMovieWidget extends StatelessWidget {
-  MoviesEntity moviesEntity;
+  final MoviesEntity moviesEntity;
 
-  PopularMovieWidget({super.key, required this.moviesEntity});
-
-  get movieId => null;
+  const PopularMovieWidget({super.key, required this.moviesEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +26,16 @@ class PopularMovieWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MovieDetailsScreen(movieId: moviesEntity.id!,moviesEntity: moviesEntity,),
+              builder: (context) => MovieDetailsScreen(
+                movieId: moviesEntity.id!,
+                moviesEntity: moviesEntity,
+              ),
             ),
           );
         } else {
 
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Movie ID is null'),
             ),
           );
@@ -66,19 +67,14 @@ class PopularMovieWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 130,
-                      left: 10,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           '${moviesEntity.title} ',
-                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.inter(
-                            textStyle:
-                                Theme.of(context).textTheme.titleMedium,
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                         SizedBox(
                           height: 10.w,
@@ -86,15 +82,13 @@ class PopularMovieWidget extends StatelessWidget {
                         Text(
                           //Todo: waiting movie time from Haneen
                           '$movieYear  $movieClassification  2h 7m',
-                          style: GoogleFonts.inter(
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  color: ColorsManager.movieDetailsTextColor,
-                                  fontSize: 10.sp,
-                                ),
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .copyWith(
+                                color: ColorsManager.movieDetailsTextColor,
+                                fontSize: 10.sp,
+                              ),
                         ),
                       ],
                     ),
