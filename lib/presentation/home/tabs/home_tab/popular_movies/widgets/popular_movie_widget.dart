@@ -9,11 +9,9 @@ import '../../../../../../core/utils/colors_manager.dart';
 import '../../../../details/movie_details/widgets/movie_details_widget.dart';
 
 class PopularMovieWidget extends StatelessWidget {
-  MoviesEntity moviesEntity;
+  final MoviesEntity moviesEntity;
 
-  PopularMovieWidget({super.key, required this.moviesEntity});
-
-  get movieId => null;
+  const PopularMovieWidget({super.key, required this.moviesEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +30,7 @@ class PopularMovieWidget extends StatelessWidget {
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Movie ID is null'),
             ),
           );

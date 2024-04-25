@@ -14,7 +14,28 @@ class MoviesGenresListWidget extends StatefulWidget {
 }
 
 class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
-  List<String> imagePaths = [AssetsManager.actionGenre,AssetsManager.adventureGenre,AssetsManager.animationGenre,AssetsManager.comedyGenre];
+  List<String> imagePaths = [
+    AssetsManager.actionGenre,
+    AssetsManager.adventureGenre,
+    AssetsManager.animationGenre,
+    AssetsManager.comedyGenre,
+    AssetsManager.crimeGenre,
+    AssetsManager.docGenre,
+    AssetsManager.dramaGenre,
+    AssetsManager.familyGenre,
+    AssetsManager.fantasyGenre,
+    AssetsManager.historyGenre,
+    AssetsManager.horrorGenre,
+    AssetsManager.musicGenre,
+    AssetsManager.mysteryGenre,
+    AssetsManager.romanceGenre,
+    AssetsManager.sfGenre,
+    AssetsManager.tvGenre,
+    AssetsManager.thrillerGenre,
+    AssetsManager.warGenre,
+    AssetsManager.westernGenre
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -25,72 +46,82 @@ class _MoviesGenresListWidgetState extends State<MoviesGenresListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BrowseTabViewModel,BrowseTabStates>(
-      buildWhen: (prevState , currentState){
+    return BlocConsumer<BrowseTabViewModel, BrowseTabStates>(
+      buildWhen: (prevState, currentState) {
         // print("Build When");
-        if(currentState is BrowseTabSuccessState ){
+        if (currentState is BrowseTabSuccessState) {
           return true;
         }
         return false;
       },
-      listenWhen: (prevState , currentState){
+      listenWhen: (prevState, currentState) {
         // print("Listen When");
-        if(currentState is BrowseTabSuccessState
-            ||currentState is BrowseTabErrorState
-            ||currentState is BrowseTabLoadingState){
+        if (currentState is BrowseTabSuccessState ||
+            currentState is BrowseTabErrorState ||
+            currentState is BrowseTabLoadingState) {
           return true;
         }
         return false;
       },
-      listener: (context,state){
-        if(state is BrowseTabLoadingState){
-          showDialog(context: context, builder: (context) {
-            return AlertDialog(
-              content: SizedBox(
-                height: 90.h,
-                child: Center(child: CircularProgressIndicator(),),
-              ),
-            );
-          },);
+      listener: (context, state) {
+        if (state is BrowseTabLoadingState) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: SizedBox(
+                  height: 90.h,
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              );
+            },
+          );
         }
-        if(state is BrowseTabErrorState){
-          showDialog(context: context, builder: (context) {
-            return AlertDialog(
-              content: Text(state.error),
-            );
-          },);
+        if (state is BrowseTabErrorState) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(state.error),
+              );
+            },
+          );
         }
-        if(state is BrowseTabSuccessState){
+        if (state is BrowseTabSuccessState) {
           Navigator.pop(context);
         }
       },
-      builder: (context , state){
-        if(state is BrowseTabSuccessState){
+      builder: (context, state) {
+        if (state is BrowseTabSuccessState) {
           // print("Success");
           return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16.h,
-                  mainAxisSpacing: 10.w
-              ),
+                  mainAxisSpacing: 10.w),
               itemCount: state.genres.length,
-              itemBuilder: (context, index){
+              itemBuilder: (context, index) {
                 return InkWell(
-                    onTap: (){Navigator.pushNamed(context, RoutesManager.specificGenreListScreen,arguments: state.genres[index]);
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RoutesManager.specificGenreListScreen,
+                          arguments: state.genres[index]);
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: MovieGenreWidget(
                         movieGenre: state.genres[index],
-                        imagePath: (index+1)<=imagePaths.length?imagePaths[index]:AssetsManager.defaultPhotoGenre,
+                        imagePath: imagePaths[index],
                       ),
-                    )
-                );
-              }
-          );
+                    ));
+              });
         }
         // print("Not Success");
-        return Center(child: CircularProgressIndicator(),);
+        return Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }

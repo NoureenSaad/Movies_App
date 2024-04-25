@@ -1,20 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/reusable_components/movie_card_widget.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import 'package:movies_app/domain/usecases/movies_details_usecase.dart';
 import 'package:movies_app/presentation/home/details/movie_details/widgets/similar_movies-widget.dart';
-import '../../../../../core/DI/di.dart';
 import '../../../../../core/api/api_manager.dart';
 import '../../../../../core/constants.dart';
-import '../../../../../core/utils/colors_manager.dart';
 import '../../../../../data/datasource_impl/movies_details_datasource_impl.dart';
 import '../../../../../data/repository_impl/movies_detais_repo_impl.dart';
 import '../view_model/movie_details_viewmodel.dart';
-import '../view_model/similar_movie_viewmodel.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final int movieId;
@@ -23,17 +18,17 @@ class MovieDetailsScreen extends StatelessWidget {
   MoviesEntity moviesEntity;
 
   MovieDetailsScreen({
-    Key? key,
+    super.key,
     required this.movieId,
     this.adult,
-     required this.moviesEntity, // Making adult parameter optional
-  }) : super(key: key);
+    required this.moviesEntity, // Making adult parameter optional
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie Details'),
+        title: const Text('Movie Details'),
       ),
       body: CustomScrollView(slivers: [
         SliverToBoxAdapter(
@@ -52,7 +47,7 @@ class MovieDetailsScreen extends StatelessWidget {
                       .fetchMovieDetails(movieId);
                 }
                 if (state is MovieDetailsLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -77,11 +72,11 @@ class MovieDetailsScreen extends StatelessWidget {
                               Text(details.title ?? '',
                                   style:
                                       Theme.of(context).textTheme.titleLarge),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 children: [
                                   Text(
-                                    '${_extractYearFromDate(details.releaseDate)}',
+                                    _extractYearFromDate(details.releaseDate),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall
@@ -90,9 +85,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w400,
                                         ),
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   Text(
-                                    '${getGPRating(adult ?? false)}',
+                                    getGPRating(adult ?? false),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall
@@ -101,9 +96,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w400,
                                         ),
                                   ),
-                                  SizedBox(width: 8),
+                                  const SizedBox(width: 8),
                                   Text(
-                                    '${formatRuntime(details.runtime)}',
+                                    formatRuntime(details.runtime),
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleSmall
@@ -114,45 +109,14 @@ class MovieDetailsScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   if (details.posterPath != null)
-                                    Stack(
-                                      children: [
-                                        Image.network(
-                                          '${Constants.imagePathBaseUrl}/${details.posterPath}',
-                                          height: 220,
-                                        ),
-                                        Positioned(
-                                          top: -7.h,
-                                          left: -11.h,
-                                          child: Stack(
-                                            children: [
-                                              Icon(
-                                                Icons.bookmark,
-                                                color: ColorsManager
-                                                    .bookmarkIconColor
-                                                    .withOpacity(0.8),
-                                                size: 50.sp,
-                                              ),
-                                              IconButton(
-                                                onPressed: () {
-                                                  //Todo: add to wishlist
-                                                },
-                                                icon: Icon(
-                                                  Icons.favorite,
-                                                  color: Colors.white,
-                                                  size: 15.sp,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  SizedBox(width: 10),
+                                    MovieCardWidget(moviesEntity: moviesEntity)
+                                  ,
+                                  const SizedBox(width: 10),
                                   Expanded(
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -164,10 +128,10 @@ class MovieDetailsScreen extends StatelessWidget {
                                             runSpacing: 8,
                                             children: details.genres?.map((e) {
                                                   return Container(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal: 8,
-                                                            vertical: 6),
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8,
+                                                        vertical: 6),
                                                     decoration: BoxDecoration(
                                                       color: Colors.transparent,
                                                       borderRadius:
@@ -179,7 +143,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                                     ),
                                                     child: Text(
                                                       e.name ?? '',
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 16,
                                                           color: Colors.white),
                                                     ),
@@ -187,7 +151,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                                 }).toList() ??
                                                 [],
                                           ),
-                                          SizedBox(height: 13),
+                                          const SizedBox(height: 13),
                                           GestureDetector(
                                             onTap: () {
                                               showDialog(
@@ -210,7 +174,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                                     ),
                                                     content: Text(
                                                       details.overview ?? '',
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 16,
                                                           color: Colors.white),
                                                     ),
@@ -220,7 +184,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                                           Navigator.of(context)
                                                               .pop();
                                                         },
-                                                        child: Text(
+                                                        child: const Text(
                                                           'Close',
                                                           style: TextStyle(
                                                               color:
@@ -232,29 +196,30 @@ class MovieDetailsScreen extends StatelessWidget {
                                                 },
                                               );
                                             },
-                                            child: Container(
-                                              child: Text(
-                                                details.overview ?? '',
-                                                maxLines: 4,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.white),
-                                              ),
+                                            child: Text(
+                                              details.overview ?? '',
+                                              maxLines: 4,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white),
                                             ),
                                           ),
-                                          SizedBox(height: 20),
+                                          const SizedBox(height: 20),
                                           Row(
                                             children: [
-                                              Icon(
+                                              const Icon(
                                                 Icons.star,
                                                 color: Colors.yellow,
                                                 size: 25,
                                               ),
-                                              SizedBox(width: 4),
+                                              const SizedBox(width: 4),
                                               Text(
-                                                '${details.voteAverage != null ? details.voteAverage!.toStringAsFixed(1) : ""}',
-                                                style: TextStyle(
+                                                details.voteAverage != null
+                                                    ? details.voteAverage!
+                                                        .toStringAsFixed(1)
+                                                    : "",
+                                                style: const TextStyle(
                                                     fontSize: 20,
                                                     color: Colors.white),
                                               ),
@@ -276,7 +241,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 if (state is MovieDetailsError) {
                   return Center(
                     child: Text('Error: ${state.message}',
-                        style: TextStyle(color: Colors.white)),
+                        style: const TextStyle(color: Colors.white)),
                   );
                 }
                 return Container(); // Return empty container as default
@@ -284,13 +249,14 @@ class MovieDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
             child: SizedBox(
           height: 8,
         )),
         SliverToBoxAdapter(
-            child: SimilarListMovie(moviesEntity: moviesEntity,))
-
+            child: SimilarListMovie(
+          moviesEntity: moviesEntity,
+        ))
       ]),
     );
   }
