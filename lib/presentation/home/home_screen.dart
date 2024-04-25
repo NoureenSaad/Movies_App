@@ -26,9 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [
     HomeTab(),
     BlocProvider(
-      create: (context) => getIt<SearchViewModel>(),
-      child: SearchTab()
-    ),
+        create: (context) => getIt<SearchViewModel>(), child: SearchTab()),
     BrowseTab(),
     WatchListTab(),
   ];
@@ -52,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text(tabsLabel[selectedIndex]),
+        title: Text(tabsLabel[selectedIndex],style: Theme.of(context).textTheme.headlineMedium,),
         actions: [
           IconButton(
             onPressed: () {
@@ -80,14 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     : ColorsManager.unSelectedTabColor,
               ),
               SizedBox(height: 4.h),
-              Text(
-                tabsLabel[index],
-                style: TextStyle(
-                    fontSize: 12.sp,
-                    color: isActive
-                        ? ColorsManager.selectedTabColor
-                        : ColorsManager.unSelectedTabColor),
-              )
+              Text(tabsLabel[index],
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: isActive
+                          ? ColorsManager.selectedTabColor
+                          : ColorsManager.unSelectedTabColor,
+                  ))
             ],
           );
         },
@@ -104,6 +100,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-

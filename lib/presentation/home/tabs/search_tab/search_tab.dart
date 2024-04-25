@@ -84,7 +84,7 @@ class _SearchTabState extends State<SearchTab> {
                 children: [
                   Icon(Icons.movie,color: Colors.white,size: 130,),
                   SizedBox(height: 12.h,),
-                  Text("No Movies Found",style: TextStyle(color: Colors.white,fontSize: 20.sp),)
+                  Text("No Movies Found",style: Theme.of(context).textTheme.titleMedium,)
                 ],
               ),
             );

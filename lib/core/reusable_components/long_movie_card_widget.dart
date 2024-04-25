@@ -82,9 +82,7 @@ class LongMovieCardWidget extends StatelessWidget {
                           ),
                           Text(
                             "${movie.voteAverage?.toStringAsFixed(1)}",
-                            style: GoogleFonts.poppins(
-                                textStyle:
-                                    Theme.of(context).textTheme.headlineSmall),
+                            style: Theme.of(context).textTheme.headlineSmall
                           ),
                         ],
                       ),

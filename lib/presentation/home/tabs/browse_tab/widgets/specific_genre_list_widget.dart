@@ -16,7 +16,7 @@ class SpecificGenreListWidget extends StatelessWidget {
     MoviesGenreEntity? genreEntity= ModalRoute.of(context)?.settings.arguments as MoviesGenreEntity?;
     return Scaffold(
       appBar: AppBar(
-        title: Text(genreEntity?.name??""),
+        title: Text(genreEntity?.name??"",style: Theme.of(context).textTheme.headlineMedium,),
       ),
       body: BlocProvider(
         create: (context)=>getIt<GenreViewModel>()..getSpecificGenre((genreEntity?.id??'').toString()),

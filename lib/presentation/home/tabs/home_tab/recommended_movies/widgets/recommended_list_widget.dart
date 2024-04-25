@@ -25,11 +25,9 @@ class RecommendListWidget extends StatelessWidget {
           children: [
             Text(
               StringsManager.recommended,
-              style: GoogleFonts.inter(
-                textStyle: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      color: Colors.white,
-                      fontSize: 24.sp,
-                    ),
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: Colors.white,
+                fontSize: 24.sp,
               ),
             ),
             SizedBox(
@@ -73,16 +71,14 @@ class RecommendListWidget extends StatelessWidget {
                                   Text(
                                     state.recommendedMovies[index].voteAverage!
                                         .toStringAsFixed(1),
-                                    style: GoogleFonts.poppins(
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall!
-                                            .copyWith(
-                                              color: Colors.white,
-                                              fontSize: 10.sp,
-                                            )),
-                                  ),
-
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(
+                                      color: Colors.white,
+                                      fontSize: 10.sp,
+                                    ),
+                                  )
                                 ],
                               ),
                               SizedBox(
@@ -92,14 +88,12 @@ class RecommendListWidget extends StatelessWidget {
                                 state.recommendedMovies[index].title.toString(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.poppins(
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall!
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontSize: 10.sp,
-                                      ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(
+                                  color: Colors.white,
+                                  fontSize: 10.sp,
                                 ),
                               ),
                               SizedBox(
@@ -107,15 +101,13 @@ class RecommendListWidget extends StatelessWidget {
                               ),
                               Text(
                                 '${ReusableFunctions.extractYear(state.recommendedMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.recommendedMovies[index].adult ?? false)} ',
-                                style: GoogleFonts.inter(
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium!
-                                      .copyWith(
-                                    color:
-                                    ColorsManager.movieDetailsTextColor,
-                                    fontSize: 10.sp,
-                                  ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium!
+                                    .copyWith(
+                                  color:
+                                  ColorsManager.movieDetailsTextColor,
+                                  fontSize: 10.sp,
                                 ),
                               ),
 

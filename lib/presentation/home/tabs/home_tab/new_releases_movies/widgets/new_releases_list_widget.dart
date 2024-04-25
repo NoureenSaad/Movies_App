@@ -25,16 +25,13 @@ class NewReleasesListWidget extends StatelessWidget {
           children: [
             Text(
               StringsManager.newReleases,
-              style: GoogleFonts.inter(
-                textStyle: Theme.of(context)
-                    .textTheme
-                    .headlineSmall!
-                    .copyWith(
-                  color: Colors.white,
-                  fontSize: 24.sp,
-                ),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .copyWith(
+                color: Colors.white,
+                fontSize: 24.sp,
               ),
-
             ),
             SizedBox(
               height: 10.h,

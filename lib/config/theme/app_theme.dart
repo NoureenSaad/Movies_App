@@ -27,25 +27,29 @@ class AppTheme{
         color: ColorsManager.selectedTabColor,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.italic,
+        fontFamily: "PlayfairDisplay"
       ),
       headlineMedium: TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.w400,
-        color: Colors.white
+        color: Colors.white,
+        fontFamily: "PlayfairDisplay"
       ),
       titleMedium: TextStyle(
         fontSize: 18,
         color: Colors.white,
         fontWeight: FontWeight.w600,
+        fontFamily: "PlayfairDisplay"
       ),
       headlineSmall: TextStyle(
         color: Colors.white,
         fontSize: 14,
         fontWeight: FontWeight.w400,
+        fontFamily: "PlayfairDisplay"
 
       ),
       titleLarge: TextStyle(
-        fontFamily: 'inter',
+        fontFamily: "PlayfairDisplay",
         color: Colors.white,
         fontWeight: FontWeight.w400,
         fontSize:  18 ,
@@ -55,9 +59,10 @@ class AppTheme{
         color: ColorsManager.selectedTabColor,
         fontSize: 14,
         fontWeight: FontWeight.w600,
+        fontFamily: "PlayfairDisplay"
       ),
       titleSmall: TextStyle(
-        fontFamily: 'inter',
+        fontFamily: "PlayfairDisplay",
         color: ColorsManager.movieDetailsTextColor,
         fontWeight: FontWeight.w400,
         fontSize:  18 ,

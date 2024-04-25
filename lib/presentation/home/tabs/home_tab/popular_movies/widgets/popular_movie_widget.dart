@@ -25,7 +25,10 @@ class PopularMovieWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MovieDetailsScreen(movieId: moviesEntity.id!,moviesEntity: moviesEntity,),
+              builder: (context) => MovieDetailsScreen(
+                movieId: moviesEntity.id!,
+                moviesEntity: moviesEntity,
+              ),
             ),
           );
         } else {
@@ -62,34 +65,27 @@ class PopularMovieWidget extends StatelessWidget {
                   Padding(
                     padding: REdgeInsets.only(
                       top: 130,
-                      left: 10,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           '${moviesEntity.title} ',
-                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.inter(
-                            textStyle:
-                                Theme.of(context).textTheme.titleMedium,
-                          ),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                         SizedBox(
                           height: 10.w,
                         ),
                         Text(
                           '$movieYear  $movieClassification  2h 7m',
-                          style: GoogleFonts.inter(
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
-                                .copyWith(
-                                  color: ColorsManager.movieDetailsTextColor,
-                                  fontSize: 10.sp,
-                                ),
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .copyWith(
+                                color: ColorsManager.movieDetailsTextColor,
+                                fontSize: 10.sp,
+                              ),
                         ),
                       ],
                     ),

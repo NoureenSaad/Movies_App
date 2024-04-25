@@ -65,6 +65,7 @@ MoviesEntity moviesEntity;
                                 children: [
                                   const Icon(
                                     Icons.star,
+                                    size: 20,
                                     color: ColorsManager.selectedTabColor,
                                   ),
                                   SizedBox(
@@ -73,14 +74,13 @@ MoviesEntity moviesEntity;
                                   Text(
                                     state.similarMovies[index].voteAverage!
                                         .toStringAsFixed(1),
-                                    style: GoogleFonts.poppins(
-                                        textStyle: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall!
-                                            .copyWith(
-                                          color: Colors.white,
-                                          fontSize: 10.sp,
-                                        )),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(
+                                      color: Colors.white,
+                                      fontSize: 13.sp,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -91,14 +91,12 @@ MoviesEntity moviesEntity;
                                 state.similarMovies[index].title.toString(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.poppins(
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall!
-                                      .copyWith(
-                                    color: Colors.white,
-                                    fontSize: 10.sp,
-                                  ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(
+                                  color: Colors.white,
+                                  fontSize: 10.sp,
                                 ),
                               ),
                               SizedBox(
@@ -106,15 +104,13 @@ MoviesEntity moviesEntity;
                               ),
                               Text(
                                 '${ReusableFunctions.extractYear(state.similarMovies[index].releaseDate ?? "")}  ${ReusableFunctions.getMovieClassification(state.similarMovies[index].adult ?? false)} ',
-                                style: GoogleFonts.inter(
-                                  textStyle: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium!
-                                      .copyWith(
-                                    color:
-                                    ColorsManager.movieDetailsTextColor,
-                                    fontSize: 10.sp,
-                                  ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium!
+                                    .copyWith(
+                                  color:
+                                  ColorsManager.movieDetailsTextColor,
+                                  fontSize: 10.sp,
                                 ),
                               ),
 

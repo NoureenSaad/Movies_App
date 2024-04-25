@@ -28,7 +28,7 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie Details'),
+        title: Text('Movie Details',style: Theme.of(context).textTheme.headlineMedium,),
       ),
       body: CustomScrollView(slivers: [
         SliverToBoxAdapter(
@@ -143,9 +143,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                                     ),
                                                     child: Text(
                                                       e.name ?? '',
-                                                      style: const TextStyle(
-                                                          fontSize: 16,
-                                                          color: Colors.white),
+                                                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                                        fontSize: 16.sp
+                                                      ),
                                                     ),
                                                   );
                                                 }).toList() ??
@@ -174,9 +174,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                                     ),
                                                     content: Text(
                                                       details.overview ?? '',
-                                                      style: const TextStyle(
-                                                          fontSize: 16,
-                                                          color: Colors.white),
+                                                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                                          fontSize: 16.sp
+                                                      ),
                                                     ),
                                                     actions: [
                                                       TextButton(
@@ -184,11 +184,12 @@ class MovieDetailsScreen extends StatelessWidget {
                                                           Navigator.of(context)
                                                               .pop();
                                                         },
-                                                        child: const Text(
+                                                        child: Text(
                                                           'Close',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.red),
+                                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                                            fontSize: 16.sp,
+                                                            color: Colors.red
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -200,9 +201,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                               details.overview ?? '',
                                               maxLines: 4,
                                               overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.white),
+                                              style:  Theme.of(context).textTheme.titleLarge?.copyWith(
+                                                  fontSize: 16.sp
+                                              ),
                                             ),
                                           ),
                                           const SizedBox(height: 20),
@@ -219,9 +220,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                                     ? details.voteAverage!
                                                         .toStringAsFixed(1)
                                                     : "",
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.white),
+                                                style:  Theme.of(context).textTheme.titleLarge,
                                               ),
                                             ],
                                           ),
