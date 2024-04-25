@@ -206,6 +206,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 16.0);
+                          FireStoreHelper.addUser(
+                            emailController.text,
+                            fullNameController.text,
+                            FirebaseAuth.instance.currentUser!.uid,
+                          );
                           Navigator.of(context).pushNamedAndRemoveUntil(
                               RoutesManager.homeScreenRoute, (route) => false);
                         }
@@ -238,11 +243,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   passwordController.text,
                                   confirmPasswordController.text,
                                   fullNameController.text);
-                              FireStoreHelper.addUser(
-                                emailController.text,
-                                fullNameController.text,
-                                FirebaseAuth.instance.currentUser!.uid,
-                              );
                             }
                           },
                           child: Text(

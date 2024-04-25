@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/reusable_components/custom_text_from_field.dart';
+
 import 'package:movies_app/presentation/home/tabs/search_tab/search_viewModel.dart';
-import '../../../../core/DI/di.dart';
+
 import '../../../../core/reusable_components/long_movie_card_widget.dart';
 
 class SearchTab extends StatefulWidget {
@@ -19,7 +21,44 @@ class _SearchTabState extends State<SearchTab> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Timer(const Duration(seconds: 0), () {
+        showAlertMessage(context);
+      });
+    });
     textCon = TextEditingController();
+  }
+
+  void showAlertMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Search ',
+            style: Theme.of(context)
+                .textTheme
+                .labelSmall
+                ?.copyWith(color: Colors.black),
+          ),
+          content: Text(
+            'Click on search icon to search for movies',
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(color: Colors.black),
+          ),
+          actions: [
+            ElevatedButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -43,10 +82,13 @@ class _SearchTabState extends State<SearchTab> {
               prefixIcon: Padding(
                 padding: REdgeInsets.all(8.0),
                 child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       SearchViewModel.get(context).search(textCon.text);
                     },
-                    child: const Icon(Icons.search,color: Colors.white,)),
+                    child: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    )),
               ),
             ),
           ),
@@ -82,9 +124,18 @@ class _SearchTabState extends State<SearchTab> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.movie,color: Colors.white,size: 130,),
-                  SizedBox(height: 12.h,),
-                  Text("No Movies Found",style: Theme.of(context).textTheme.titleMedium,)
+                  Icon(
+                    Icons.movie,
+                    color: Colors.white,
+                    size: 130,
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Text(
+                    "No Movies Found",
+                    style: Theme.of(context).textTheme.titleMedium,
+                  )
                 ],
               ),
             );
