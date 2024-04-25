@@ -9,7 +9,7 @@ import 'core/my_bloc_observer.dart';
 import 'firebase_options.dart';
 import 'my_app.dart';
 
-Future<void> main() async  {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ApiManager.init();
   Bloc.observer = MyBlocObserver();
@@ -26,4 +26,5 @@ Future<void> main() async  {
       child: const MyApp(),
     ),
   );
+>>>>>>>>> Temporary merge branch 2
 }

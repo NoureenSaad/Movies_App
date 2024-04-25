@@ -14,8 +14,8 @@ class RegisterViewModel extends Cubit<RegisterState> {
       BlocProvider.of(context);
   RegisterUseCase registerUseCase;
 
-  register(String email, String password,  String confirmedPassword,
-       String fullName) async {
+  register(String email, String password, String confirmedPassword,
+      String fullName) async {
     emit(RegisterLoadingState());
     var credential = await registerUseCase.callRegister(
         email, password, confirmedPassword, fullName);
