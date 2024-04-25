@@ -1,11 +1,13 @@
 import 'dart:async';
 
+
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movies_app/domain/usecases/firestore_usecase.dart';
+
 
 import '../../../../../domain/entities/MoviesEntity.dart';
+import '../../../../../domain/usecases/firebase_usecases/firestore_usecase.dart';
 
 @injectable
 class WatchListViewModel extends Cubit<WatchlistState>{

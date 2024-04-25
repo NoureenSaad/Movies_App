@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/reusable_components/movie_card_widget.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../../../../../core/constants.dart';
@@ -33,7 +32,6 @@ class PopularMovieWidget extends StatelessWidget {
             ),
           );
         } else {
-
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Movie ID is null'),
@@ -80,7 +78,6 @@ class PopularMovieWidget extends StatelessWidget {
                           height: 10.w,
                         ),
                         Text(
-                          //Todo: waiting movie time from Haneen
                           '$movieYear  $movieClassification  2h 7m',
                           style: Theme.of(context)
                               .textTheme

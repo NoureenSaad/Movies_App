@@ -67,6 +67,7 @@ class AppTheme{
         fontWeight: FontWeight.w400,
         fontSize:  18 ,
       ),
+
     ),
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(

@@ -9,7 +9,7 @@ import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../presentation/home/details/movie_details/widgets/movie_details_widget.dart';
 
 class MovieCardWidget extends StatefulWidget {
-  MoviesEntity moviesEntity;
+ final  MoviesEntity moviesEntity;
   late bool isMovieFavorite;
 
   MovieCardWidget({super.key, required this.moviesEntity});
