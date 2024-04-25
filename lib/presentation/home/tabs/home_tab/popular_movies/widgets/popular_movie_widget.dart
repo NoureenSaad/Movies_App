@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/reusable_components/movie_card_widget.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../../../../../core/constants.dart';
@@ -21,6 +20,7 @@ class PopularMovieWidget extends StatelessWidget {
         ReusableFunctions.getMovieClassification(moviesEntity.adult ?? false);
     return InkWell(
       onTap: () {
+        // Navigate to movie details screen if movieId is not null لا سمح الله يعني
         if (moviesEntity.id != null) {
           Navigator.push(
             context,
@@ -63,7 +63,7 @@ class PopularMovieWidget extends StatelessWidget {
                     width: 14.w,
                   ),
                   Padding(
-                    padding: REdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 130,
                     ),
                     child: Column(

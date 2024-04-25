@@ -24,6 +24,7 @@ class SearchRepoImpl extends SearchRepo{
             id: search.id,
             voteAverage: search.voteAverage,
           )).toList();
+          print('searchList : $searchList');
           return Left(searchList);
 
         },

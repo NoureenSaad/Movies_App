@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants.dart';
@@ -11,7 +9,7 @@ import 'package:movies_app/domain/entities/MoviesEntity.dart';
 import '../../presentation/home/details/movie_details/widgets/movie_details_widget.dart';
 
 class MovieCardWidget extends StatefulWidget {
-  MoviesEntity moviesEntity;
+ final  MoviesEntity moviesEntity;
   late bool isMovieFavorite;
 
   MovieCardWidget({super.key, required this.moviesEntity});

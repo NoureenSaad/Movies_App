@@ -2,7 +2,7 @@ import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies_app/core/api/api_manager.dart';
 import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
-import 'package:movies_app/data/datasource_contract/firestore_datasource.dart';
+import 'package:movies_app/data/datasource_contract/firebase_datasource/firestore_datasource.dart';
 import 'package:movies_app/domain/entities/MoviesEntity.dart';
 
 @Injectable(as: FirestoreDataSource)

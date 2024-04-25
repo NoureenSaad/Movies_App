@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import '../../../data/model/user_model/user_model.dart';
 import '../../../domain/entities/MoviesEntity.dart';
@@ -74,12 +75,31 @@ class FireStoreHelper {
     yield* snapshot;
   }
 
-   Stream<List<MoviesEntity>> ListenToWatchList(String userID) async*{
+  Stream<List<MoviesEntity>> ListenToWatchList(String userID) async* {
     Stream<QuerySnapshot<MoviesEntity>> movieQueryStream =
         getWatchList(userID).snapshots();
     Stream<List<MoviesEntity>> movieStream = movieQueryStream.map(
         (querySnapshot) =>
             querySnapshot.docs.map((documents) => documents.data()).toList());
     yield* movieStream;
+  }
+
+  Future<UserCredential> login(
+      {required String email, required String password}) async {
+    UserCredential credential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    return credential;
+  }
+
+  Future<UserCredential> createNewUser({
+    required String email,
+    required String password,
+    required String fullName,
+    required String confirmedPassword
+  }) async {
+    UserCredential credential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
+
+    return credential;
   }
 }

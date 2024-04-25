@@ -54,9 +54,14 @@ MoviesEntity moviesEntity;
                             children: [
                               SizedBox(
                                 height: 150.h,
-                                child: MovieCardWidget(
-                                  moviesEntity:
-                                  state.similarMovies[index],
+                                child: InkWell(
+                                  onTap: () {
+                                    //Todo: navigate to movie details
+                                  },
+                                  child: MovieCardWidget(
+                                    moviesEntity:
+                                    state.similarMovies[index],
+                                  ),
                                 ),
                               ),
                               Row(
