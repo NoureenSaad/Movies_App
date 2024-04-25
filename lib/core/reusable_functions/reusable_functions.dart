@@ -1,5 +1,8 @@
 class ReusableFunctions {
   static String extractYear(String dateString) {
+    if(dateString == ""){
+      return "";
+    }
     DateTime dateTime = DateTime.parse(dateString);
     return dateTime.year.toString();
   }

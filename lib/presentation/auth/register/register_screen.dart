@@ -265,7 +265,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         Text(
                           'Already have an account?',
-                          style: AppTheme.lightTheme.textTheme.labelSmall,
+                          style: AppTheme.lightTheme.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.w400
+                          ),
                         ),
                         TextButton(
                           onPressed: () {
