@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/constants.dart';
+import 'package:movies_app/core/firebase/helper/firestore_helper.dart';
 import 'package:movies_app/presentation/auth/register/viewmodel/register_viewmodel.dart';
 
 import '../../../config/theme/app_theme.dart';
@@ -236,6 +238,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   passwordController.text,
                                   confirmPasswordController.text,
                                   fullNameController.text);
+                              FireStoreHelper.addUser(
+                                emailController.text,
+                                fullNameController.text,
+                                FirebaseAuth.instance.currentUser!.uid,
+                              );
                             }
                           },
                           child: Text(
