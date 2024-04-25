@@ -25,11 +25,9 @@ MoviesEntity moviesEntity;
           children: [
             Text(
               StringsManager.moreLikeThis,
-              style: GoogleFonts.inter(
-                textStyle: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: Colors.white,
-                  fontSize: 24.sp,
-                ),
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                color: Colors.white,
+                fontSize: 24.sp,
               ),
             ),
             SizedBox(
