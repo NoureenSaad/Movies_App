@@ -26,4 +26,5 @@ Future<void> main() async {
       child: const MyApp(),
     ),
   );
+>>>>>>>>> Temporary merge branch 2
 }
